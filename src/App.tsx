@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler } from 'lucide-react';
+import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MinecraftFormatter from './pages/MinecraftFormatter';
 import Base64Converter from './pages/Base64Converter';
@@ -14,6 +14,7 @@ import UnitConversion from './pages/UnitConverter';
 import UnitConverter from './pages/UnitConverter';
 import MarkdownEditor from './pages/Markdown';
 import PasswordGenerator from './pages/PasswordGenerator';
+import QRCodeGenerator from './pages/QRCodeGenerator';
  
 const tools = [
   {
@@ -89,9 +90,16 @@ const tools = [
   {
     name: 'Password Generator & Strength Checker',
     description: 'Generate and check the strength of your passwords',
-    icon: FileText, //icona da lucid-react
+    icon: FileText,
     path: '/password',
     gradient: 'from-green-400 to-blue-500',
+  },
+  {
+    name: 'QR Code Generator',
+    description: 'Generate QR codes from any text',
+    icon: ScanLine,
+    path: '/qrcode',
+    gradient: 'from-teal-400 to-indigo-500',
   }  
 ];
 
@@ -101,7 +109,7 @@ function HomePage() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-            Developer's Toolkit
+            TCDev's Toolkit
           </h1>
           <p className="text-gray-400 text-lg">
             A collection of essential tools for developers
@@ -145,6 +153,7 @@ export default function App() {
       <Route path="/unit" element={<UnitConverter />} />
       <Route path="/markdown" element={<MarkdownEditor />} />
       <Route path="/password" element={<PasswordGenerator />} />
+      <Route path="/qrcode" element={<QRCodeGenerator />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
