@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('https://cdn.jsdelivr.net/gh/South-Paw/typeface-minecraft@master/font/minecraft.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-minecraft {
+  font-family: 'Minecraft', monospace;
+  letter-spacing: 0.025em;
+  line-height: 1.5;
+}
+
+.minecraft-obfuscated {
+  display: inline-block;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* styles.css */
+.App {
+  background-color: #1a202c;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #fff;
+}
+
+input[type='color'] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+input[type='color']:focus {
+  outline: none;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+}
