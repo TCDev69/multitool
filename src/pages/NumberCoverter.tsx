@@ -38,7 +38,7 @@ export default function NumberConverter() {
         <PageHeader
           title="Number Converter"
           description="Convert numbers between binary, octal, decimal, and hexadecimal"
-          gradient="from-indigo-400 to-blue-500"
+          gradient="from-indigo-400 to-purple-500"
         />
 
         <Card>
