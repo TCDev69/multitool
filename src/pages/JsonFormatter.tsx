@@ -7,7 +7,7 @@ import { Card } from '../components/Card';
 export default function JsonFormatter() {
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
-
+ 
   const formatJson = () => {
     try {
       if (!input) return '';

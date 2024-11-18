@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wand2 } from 'lucide-react';
 import { ColorPreview } from './ColorPreview';
-
+ 
 const FORMATTING_CODES = {
   '&0': 'Black',
   '&1': 'Dark Blue',

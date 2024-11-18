@@ -20,7 +20,7 @@ export default function HashGenerator() {
     'BLAKE2s': '',
   });
   const [copiedHash, setCopiedHash] = useState<string | null>(null);
-
+ 
   useEffect(() => {
     const updateHashes = async () => {
       if (!input) {

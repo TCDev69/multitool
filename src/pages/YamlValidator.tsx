@@ -9,7 +9,7 @@ export default function YamlValidator() {
   const [input, setInput] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [output, setOutput] = useState('');
-
+ 
   const handleInputChange = useCallback((value: string) => {
     setInput(value);
     try {

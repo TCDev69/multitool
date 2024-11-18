@@ -5,7 +5,7 @@ interface PageHeaderProps {
   description: string;
   gradient: string;
 }
-
+ 
 export function PageHeader({ title, description, gradient }: PageHeaderProps) {
   return (
     <div className="text-center mb-8">

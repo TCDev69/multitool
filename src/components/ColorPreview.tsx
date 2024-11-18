@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 interface ColorPreviewProps {
   text: string;
 }
-
+ 
 const MINECRAFT_COLORS: Record<string, string> = {
   '0': '#000000',
   '1': '#0000AA',

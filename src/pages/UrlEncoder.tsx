@@ -14,7 +14,7 @@ export default function UrlEncoder() {
         return encodeURIComponent(input);
       } else {
         return decodeURIComponent(input);
-      }
+      } 
     } catch (e) {
       return 'Invalid input';
     }

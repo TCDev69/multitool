@@ -11,7 +11,7 @@
   font-display: swap;
 }
 
-.font-minecraft {
+.font-minecraft { 
   font-family: 'Minecraft', monospace;
   letter-spacing: 0.025em;
   line-height: 1.5;

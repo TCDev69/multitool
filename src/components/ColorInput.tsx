@@ -5,7 +5,7 @@ interface ColorInputProps {
   text: string;
   setText: (text: string) => void;
 }
-
+ 
 export function ColorInput({ text, setText }: ColorInputProps) {
   return (
     <div className="space-y-2">
