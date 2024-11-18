@@ -9,6 +9,7 @@ import JsonFormatter from './pages/JsonFormatter';
 import UrlEncoder from './pages/UrlEncoder';
 import TextTools from './pages/TextTools';
 import YamlValidator from './pages/YamlValidator';
+import NumberConverter from './pages/NumberCoverter';
  
 const tools = [
   {
@@ -60,6 +61,13 @@ const tools = [
     path: '/yaml',
     gradient: 'from-emerald-400 to-green-500',
   },
+  {
+    name: 'Number Converter',
+    description: 'Convert numbers in different formats',
+    icon: FileJson,
+    path: '/number',
+    gradient: 'from-indigo-400 to-purple-500',
+  },
 ];
 
 function HomePage() {
@@ -108,6 +116,7 @@ export default function App() {
       <Route path="/url" element={<UrlEncoder />} />
       <Route path="/text" element={<TextTools />} />
       <Route path="/yaml" element={<YamlValidator />} />
+      <Route path="/number" element={<NumberConverter />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
