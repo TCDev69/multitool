@@ -13,6 +13,7 @@ import NumberConverter from './pages/NumberCoverter';
 import UnitConversion from './pages/UnitConverter';
 import UnitConverter from './pages/UnitConverter';
 import MarkdownEditor from './pages/Markdown';
+import PasswordGenerator from './pages/PasswordGenerator';
  
 const tools = [
   {
@@ -84,7 +85,14 @@ const tools = [
     icon: FileText,
     path: '/markdown',
     gradient: 'from-pink-400 to-blue-500',
-  }
+  },
+  {
+    name: 'Password Generator & Strength Checker',
+    description: 'Generate and check the strength of your passwords',
+    icon: FileText, //icona da lucid-react
+    path: '/password',
+    gradient: 'from-green-400 to-blue-500',
+  }  
 ];
 
 function HomePage() {
@@ -136,6 +144,7 @@ export default function App() {
       <Route path="/number" element={<NumberConverter />} />
       <Route path="/unit" element={<UnitConverter />} />
       <Route path="/markdown" element={<MarkdownEditor />} />
+      <Route path="/password" element={<PasswordGenerator />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
