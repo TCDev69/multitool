@@ -10,6 +10,8 @@ import UrlEncoder from './pages/UrlEncoder';
 import TextTools from './pages/TextTools';
 import YamlValidator from './pages/YamlValidator';
 import NumberConverter from './pages/NumberCoverter';
+import UnitConversion from './pages/UnitConverter';
+import UnitConverter from './pages/UnitConverter';
  
 const tools = [
   {
@@ -68,6 +70,13 @@ const tools = [
     path: '/number',
     gradient: 'from-indigo-400 to-purple-500',
   },
+  {
+    name: 'Unit Converter',
+    description: 'Convert lenght, weight and temperature',
+    icon: FileJson,
+    path: '/unit',
+    gradient: 'from-orange-400 to-red-500',
+  },
 ];
 
 function HomePage() {
@@ -117,6 +126,7 @@ export default function App() {
       <Route path="/text" element={<TextTools />} />
       <Route path="/yaml" element={<YamlValidator />} />
       <Route path="/number" element={<NumberConverter />} />
+      <Route path="/unit" element={<UnitConverter />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
