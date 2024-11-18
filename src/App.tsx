@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson } from 'lucide-react';
+import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MinecraftFormatter from './pages/MinecraftFormatter';
 import Base64Converter from './pages/Base64Converter';
@@ -12,6 +12,7 @@ import YamlValidator from './pages/YamlValidator';
 import NumberConverter from './pages/NumberCoverter';
 import UnitConversion from './pages/UnitConverter';
 import UnitConverter from './pages/UnitConverter';
+import MarkdownEditor from './pages/Markdown';
  
 const tools = [
   {
@@ -66,17 +67,24 @@ const tools = [
   {
     name: 'Number Converter',
     description: 'Convert numbers in different formats',
-    icon: FileJson,
+    icon: FileDigit,
     path: '/number',
     gradient: 'from-indigo-400 to-purple-500',
   },
   {
     name: 'Unit Converter',
-    description: 'Convert lenght, weight and temperature',
-    icon: FileJson,
+    description: 'Convert length, weight and temperature',
+    icon: Ruler,
     path: '/unit',
     gradient: 'from-orange-400 to-red-500',
   },
+  {
+    name: 'Markdown Editor',
+    description: 'Write and preview your Markdown content',
+    icon: FileText,
+    path: '/markdown',
+    gradient: 'from-pink-400 to-blue-500',
+  }
 ];
 
 function HomePage() {
@@ -127,6 +135,7 @@ export default function App() {
       <Route path="/yaml" element={<YamlValidator />} />
       <Route path="/number" element={<NumberConverter />} />
       <Route path="/unit" element={<UnitConverter />} />
+      <Route path="/markdown" element={<MarkdownEditor />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
