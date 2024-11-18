@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine } from 'lucide-react';
+import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MinecraftFormatter from './pages/MinecraftFormatter';
 import Base64Converter from './pages/Base64Converter';
@@ -15,6 +15,7 @@ import UnitConverter from './pages/UnitConverter';
 import MarkdownEditor from './pages/Markdown';
 import PasswordGenerator from './pages/PasswordGenerator';
 import QRCodeGenerator from './pages/QRCodeGenerator';
+import Timer from './pages/Timer';
  
 const tools = [
   {
@@ -100,7 +101,14 @@ const tools = [
     icon: ScanLine,
     path: '/qrcode',
     gradient: 'from-teal-400 to-indigo-500',
-  }  
+  },
+  {
+    name: 'Date & Time Tools',
+    description: 'Countdown Timer, Time Zone Converter, Unix Timestamp Converter',
+    icon: Clock,
+    path: '/timer',
+    gradient: 'from-teal-400 to-blue-500',
+  }    
 ];
 
 function HomePage() {
@@ -154,6 +162,7 @@ export default function App() {
       <Route path="/markdown" element={<MarkdownEditor />} />
       <Route path="/password" element={<PasswordGenerator />} />
       <Route path="/qrcode" element={<QRCodeGenerator />} />
+      <Route path="/timer" element={<Timer />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
