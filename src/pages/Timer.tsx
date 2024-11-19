@@ -5,14 +5,13 @@ import { ArrowLeft, FolderClock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Timer() {
-  const [timerValue, setTimerValue] = useState(0); // Timer value in seconds
-  const [timerStr, setTimerStr] = useState('00:00:00'); // Timer display string
-  const [isRunning, setIsRunning] = useState(false); // To check if the timer is running
-  const [intervalId, setIntervalId] = useState<any>(null); // Store interval ID for cleanup
-  const [progress, setProgress] = useState(100); // Progress bar value, starting from 100%
-  const [totalTime, setTotalTime] = useState(0); // Store total time for progress calculation
+  const [timerValue, setTimerValue] = useState(0); 
+  const [timerStr, setTimerStr] = useState('00:00:00');
+  const [isRunning, setIsRunning] = useState(false); 
+  const [intervalId, setIntervalId] = useState<any>(null);
+  const [progress, setProgress] = useState(100); 
+  const [totalTime, setTotalTime] = useState(0); 
 
-  // Predefined timer durations (in seconds)
   const presetTimers = [
     { label: '5 minutes', value: 5 * 60 },
     { label: '10 minutes', value: 10 * 60 },
@@ -22,10 +21,8 @@ export default function Timer() {
     { label: '1 hour', value: 60 * 60 },
   ];
 
-  // Audio for when the timer finishes
-  const timerEndSound = new Audio('/sound/ring.mp3'); // Replace with your sound file
+  const timerEndSound = new Audio('/sound/ring.mp3');
 
-  // Function to format the timer in hh:mm:ss format
   const formatTime = (time: number) => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
@@ -33,61 +30,54 @@ export default function Timer() {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
 
-  // Start the timer
   const startTimer = () => {
-    if (isRunning) return; // Prevent starting the timer if it's already running
+    if (isRunning) return;
     setIsRunning(true);
-    setTotalTime(timerValue); // Set total time when the timer starts
+    setTotalTime(timerValue); 
   
     const id = setInterval(() => {
       setTimerValue((prev) => {
         if (prev <= 1) {
           clearInterval(id);
           setIsRunning(false);
-          timerEndSound.play(); // Riproduce il suono quando il timer finisce
+          timerEndSound.play(); 
           return 0;
         }
         return prev - 1;
       });
     }, 1000);
   
-    setIntervalId(id); // Store the interval ID to clear it later
+    setIntervalId(id); 
   };
 
-  // Stop the timer
   const stopTimer = () => {
     clearInterval(intervalId);
     setIsRunning(false);
   };
 
-  // Reset the timer
   const resetTimer = () => {
     clearInterval(intervalId);
     setIsRunning(false);
     setTimerValue(0);
-    setProgress(100); // Reset progress back to 100%
-    setTotalTime(0); // Reset total time as well
+    setProgress(100);
+    setTotalTime(0);
   };
 
-  // Handle setting the timer value from the custom input
   const handleCustomTimerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const [hours, minutes, seconds] = e.target.value.split(':').map(Number);
-    setTimerValue(hours * 3600 + minutes * 60 + seconds); // Convert h:m:s to seconds
+    setTimerValue(hours * 3600 + minutes * 60 + seconds);
   };
 
-  // Handle selecting a preset timer
   const handlePresetTimer = (timeInSeconds: number) => {
     setTimerValue(timeInSeconds);
-    setProgress(100); // Reset progress when a preset is selected
-    setTotalTime(timeInSeconds); // Set total time for the progress bar
-    startTimer(); // Automatically start the timer when a preset is selected
+    setProgress(100);
+    setTotalTime(timeInSeconds);
+    startTimer(); 
   };
 
-  // Update the timer string and progress bar every second
   useEffect(() => {
     setTimerStr(formatTime(timerValue));
 
-    // Update progress bar (decrease it based on time)
     if (totalTime > 0) {
       setProgress((prev) => Math.max(0, 100 - (100 * (totalTime - timerValue)) / totalTime));
     }
@@ -121,7 +111,6 @@ export default function Timer() {
                 <p className="text-5xl font-semibold">{timerStr}</p>
               </div>
 
-            {/* Progress Bar */}
             <div className="w-full bg-gray-800 h-2 rounded-full mt-12">
               <div
                 className="h-full bg-teal-600 rounded-full"
@@ -166,7 +155,6 @@ export default function Timer() {
                 className="w-full h-12 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
               />
             </div>
-        {/* Preset Timer Cards */}
         <div className="mt-8 bg-gray-800/50 backdrop-blur rounded-lg p-6 shadow-xl">
           <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
             <FolderClock className="text-blue-400" />

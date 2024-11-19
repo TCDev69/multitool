@@ -25,7 +25,6 @@ export default function UnitConverter() {
   
     let result: number = 0;
   
-    // Length conversions
     if (unitType === 'length') {
       const conversions = {
         millimeter: 1,
@@ -40,7 +39,6 @@ export default function UnitConverter() {
       result = (value * conversions[fromUnit]) / conversions[toUnit];
     }
   
-    // Weight conversions
     if (unitType === 'weight') {
       const conversions = {
         milligram: 1,
@@ -51,40 +49,31 @@ export default function UnitConverter() {
         pound: 453592,
       };
   
-      // Convert everything to milligrams (mg)
       const fromBaseUnit = conversions[fromUnit] || 1;
       const toBaseUnit = conversions[toUnit] || 1;
   
       result = (value * fromBaseUnit) / toBaseUnit;
     }
   
-    // Temperature conversions
-    // Temperature conversions
-// Temperature conversions
 if (unitType === 'temperature') {
     let baseValue = value;
   
-    // Convert to Celsius first
     if (fromUnit === 'fahrenheit') {
-      baseValue = (value - 32) * 5 / 9; // Convert to Celsius first
+      baseValue = (value - 32) * 5 / 9;
     } else if (fromUnit === 'kelvin') {
-      baseValue = value - 273.15; // Convert to Celsius first
+      baseValue = value - 273.15; 
     }
   
-    // Now convert from Celsius to target unit
     if (toUnit === 'fahrenheit') {
-      result = (baseValue * 9) / 5 + 32; // Convert from Celsius to Fahrenheit
+      result = (baseValue * 9) / 5 + 32;
     } else if (toUnit === 'kelvin') {
-      result = baseValue + 273.15; // Convert from Celsius to Kelvin
+      result = baseValue + 273.15;
     } else {
-      result = baseValue; // If it's Celsius to Celsius, just return the baseValue
+      result = baseValue; 
     }
   }
-  
-  
-  
-    // Volume conversions
-    if (unitType === 'volume') {
+
+  if (unitType === 'volume') {
       const conversions = {
         milliliter: 1,
         liter: 1000,
@@ -98,7 +87,6 @@ if (unitType === 'temperature') {
         teaspoon: 4.92892,
       };
   
-      // Convert everything to milliliters (ml)
       const fromBaseUnit = conversions[fromUnit] || 1;
       const toBaseUnit = conversions[toUnit] || 1;
   
@@ -131,7 +119,6 @@ if (unitType === 'temperature') {
 
         <Card>
           <div className="space-y-4">
-            {/* Unit Type Selection */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Choose Unit Type
@@ -180,7 +167,6 @@ if (unitType === 'temperature') {
               </div>
             </div>
 
-            {/* Input Field */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Input Value</label>
               <input
@@ -192,9 +178,7 @@ if (unitType === 'temperature') {
               />
             </div>
 
-            {/* Unit Selection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-              {/* From Unit */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">From Unit</label>
                 <select
@@ -202,7 +186,6 @@ if (unitType === 'temperature') {
                   onChange={(e) => setFromUnit(e.target.value)}
                   className="w-full bg-gray-900 text-white font-mono p-3 rounded focus:ring-2 focus:ring-orange-500"
                 >
-                  {/* From Unit - Metric and Imperial */}
                   <optgroup label="Metrico">
                     {unitType === 'length' && (
                       <>
@@ -265,7 +248,6 @@ if (unitType === 'temperature') {
                 </select>
               </div>
 
-              {/* To Unit */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">To Unit</label>
                 <select
@@ -273,7 +255,6 @@ if (unitType === 'temperature') {
                   onChange={(e) => setToUnit(e.target.value)}
                   className="w-full bg-gray-900 text-white font-mono p-3 rounded focus:ring-2 focus:ring-orange-500"
                 >
-                  {/* To Unit - Metric and Imperial */}
                   <optgroup label="Metrico">
                     {unitType === 'length' && (
                       <>
@@ -337,7 +318,6 @@ if (unitType === 'temperature') {
               </div>
             </div>
 
-            {/* Output Field */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Output Value</label>
               <input

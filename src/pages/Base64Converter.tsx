@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowDownUp } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { Card } from '../components/Card';
- 
+
 export default function Base64Converter() {
   const [input, setInput] = useState('');
   const [mode, setMode] = useState<'encode' | 'decode'>('encode');
@@ -24,8 +24,13 @@ export default function Base64Converter() {
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedText(text);
-      setTimeout(() => setCopiedText(null), 2000); // Reset the copied state after 2 seconds
+      setTimeout(() => setCopiedText(null), 2000); 
     });
+  };
+
+  const toggleMode = () => {
+    setMode(mode === 'encode' ? 'decode' : 'encode');
+    setInput(''); 
   };
 
   return (
@@ -46,6 +51,21 @@ export default function Base64Converter() {
         />
 
         <Card>
+        <div className="space-y-6">
+  <div className="flex justify-between items-center mb-4">
+    <h2 className="text-xl font-semibold">
+      {mode === 'encode' ? 'Text to Base64' : 'Base64 to Text'}
+    </h2>
+    <button
+      onClick={toggleMode}
+      className="flex items-center gap-2 px-4 py-2 bg-purple-500 rounded hover:bg-purple-600 transition-colors"
+    >
+      <ArrowDownUp className="h-4 w-4" />
+      Switch Mode
+    </button>
+  </div>
+</div>
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">

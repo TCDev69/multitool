@@ -21,9 +21,9 @@ export default function PasswordGenerator() {
   };
 
   const checkStrength = (password: string) => {
-    const regexWeak = /^(?=.*[a-zA-Z0-9]).{6,12}$/; // Weak: 6-12 characters, alphanumeric only
-    const regexMedium = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{8,16}$/; // Medium: mixed case, numbers, special characters, 8-16 chars
-    const regexStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{16,}$/; // Strong: mixed case, numbers, special characters, 16+ chars
+    const regexWeak = /^(?=.*[a-zA-Z0-9]).{6,12}$/; 
+    const regexMedium = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{8,16}$/;
+    const regexStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{16,}$/;
   
     if (regexStrong.test(password)) {
       setStrength('Strong');

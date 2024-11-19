@@ -40,12 +40,12 @@ export default function HashGenerator() {
 
       const newHashes: Record<string, string> = {};
 
-      // Web Crypto API for SHA-* algorithms
       for (const algorithm of [
+        'SHA-1',
+        'SHA-224',
         'SHA-256',
         'SHA-384',
         'SHA-512',
-        'SHA-1',
       ]) {
         try {
           const encoder = new TextEncoder();
@@ -60,25 +60,22 @@ export default function HashGenerator() {
         }
       }
 
-      // SHA-224 using crypto-js
       try {
         newHashes['SHA-224'] = cryptoJS.SHA224(input).toString(cryptoJS.enc.Hex);
       } catch (e) {
         newHashes['SHA-224'] = 'Error generating hash';
       }
 
-      // External crypto-js for MD5, RIPEMD-160
       newHashes['MD5'] = cryptoJS.MD5(input).toString(cryptoJS.enc.Hex);
       newHashes['RIPEMD-160'] = cryptoJS.RIPEMD160(input).toString(cryptoJS.enc.Hex);
 
-      // BLAKE2b and BLAKE2s with blakejs
       try {
-        newHashes['BLAKE2b'] = blake2b(input).toString('hex');
+        newHashes['BLAKE2b'] = blake2b(input).toString();
       } catch (e) {
         newHashes['BLAKE2b'] = 'Error generating hash';
       }
       try {
-        newHashes['BLAKE2s'] = blake2s(input).toString('hex');
+        newHashes['BLAKE2s'] = blake2s(input).toString();
       } catch (e) {
         newHashes['BLAKE2s'] = 'Error generating hash';
       }
@@ -94,7 +91,7 @@ export default function HashGenerator() {
 
     navigator.clipboard.writeText(hash).then(() => {
       setCopiedHash(hash);
-      setTimeout(() => setCopiedHash(null), 2000); // Reset the copied state after 2 seconds
+      setTimeout(() => setCopiedHash(null), 2000); 
     });
   };
 

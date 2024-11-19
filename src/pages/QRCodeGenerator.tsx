@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Download } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { Card } from '../components/Card';
-import QRCode from 'react-qr-code'; // Per generare il QR Code
-import html2canvas from 'html2canvas'; // Per catturare l'elemento e salvarlo come immagine
+import QRCode from 'react-qr-code'; 
+import html2canvas from 'html2canvas';
 
 export default function QRCodeGenerator() {
   const [inputText, setInputText] = useState('');
   const [qrValue, setQrValue] = useState('');
-  const maxLength = 1852; // Limite massimo di caratteri
+  const maxLength = 1852;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    // Limita il numero di caratteri a maxLength
     if (value.length <= maxLength) {
       setInputText(value);
-      setQrValue(value); // Aggiorna il QR Code mentre l'utente scrive
+      setQrValue(value);
     }
   };
 
@@ -25,14 +24,13 @@ export default function QRCodeGenerator() {
     const qrCodeElement = document.getElementById('qr-code-svg') as HTMLElement;
 
     html2canvas(qrCodeElement, {
-      useCORS: true, // Per gestire immagini di domini esterni
-      backgroundColor: null, // Imposta il background trasparente
+      useCORS: true, 
+      backgroundColor: null,
     }).then((canvas) => {
-      // Converti il canvas in formato jpg
-      const dataUrl = canvas.toDataURL('image/jpeg', 1.0); // Qualità dell'immagine 1.0 (massima)
+      const dataUrl = canvas.toDataURL('image/jpeg', 1.0); 
       const link = document.createElement('a');
       link.href = dataUrl;
-      link.download = 'qrcode.jpg'; // Nome del file da scaricare
+      link.download = 'qrcode.jpg'; 
       link.click();
     });
   };
@@ -56,23 +54,23 @@ export default function QRCodeGenerator() {
 
         <Card>
           <div className="space-y-4">
-            {/* Input Text Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Enter Text</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Enter Text
+              </label>
               <input
                 type="text"
                 value={inputText}
                 onChange={handleInputChange}
                 className="w-full h-12 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
                 placeholder="Enter text to generate QR code"
-                maxLength={maxLength} // Limita i caratteri nel campo di testo
+                maxLength={maxLength}
               />
               <div className="text-sm text-gray-400 mt-2">
                 {inputText.length}/{maxLength} characters
               </div>
             </div>
 
-            {/* QR Code Preview */}
             {qrValue && (
               <div className="flex justify-center mt-6">
                 <div id="qr-code-svg">
@@ -81,14 +79,14 @@ export default function QRCodeGenerator() {
               </div>
             )}
 
-            {/* Download QR Code Button */}
             {qrValue && (
               <div className="flex justify-center mt-6">
                 <button
                   onClick={downloadQRCode}
-                  className="px-6 py-3 bg-teal-500 text-white rounded hover:bg-teal-600 focus:ring-2 focus:ring-teal-500"
+                  className="flex items-center px-6 py-3 bg-teal-500 text-white rounded hover:bg-teal-600 focus:ring-2 focus:ring-teal-500"
                 >
-                  Download QR Code as JPG
+                  <Download className="mr-2 h-4 w-4" />
+                  Download QR Code
                 </button>
               </div>
             )}

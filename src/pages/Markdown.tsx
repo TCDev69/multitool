@@ -28,7 +28,6 @@ export default function MarkdownEditor() {
 
         <Card>
           <div className="space-y-6">
-            {/* Markdown Editor */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Markdown Input</label>
               <textarea
@@ -39,7 +38,6 @@ export default function MarkdownEditor() {
               />
             </div>
 
-            {/* Preview */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Preview</label>
               <div className="w-full h-auto bg-gray-900 rounded p-3 text-white">

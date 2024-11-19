@@ -1,6 +1,5 @@
-import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock } from 'lucide-react';
+import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, Smile, FileType, Timer, Radio, Table, Key } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MinecraftFormatter from './pages/MinecraftFormatter';
 import Base64Converter from './pages/Base64Converter';
@@ -10,13 +9,21 @@ import UrlEncoder from './pages/UrlEncoder';
 import TextTools from './pages/TextTools';
 import YamlValidator from './pages/YamlValidator';
 import NumberConverter from './pages/NumberCoverter';
-import UnitConversion from './pages/UnitConverter';
 import UnitConverter from './pages/UnitConverter';
 import MarkdownEditor from './pages/Markdown';
 import PasswordGenerator from './pages/PasswordGenerator';
 import QRCodeGenerator from './pages/QRCodeGenerator';
-import Timer from './pages/Timer';
- 
+import TimerPage from './pages/Timer';
+import GraphGenerator from './pages/GraphGenerator';
+import IpGeolocation from './pages/IpGeolocation';
+import LoremIpsum from './pages/LoremIpsum';
+import MorseCode from './pages/MorseCode';
+import UuidGenerator from './pages/UuidGenerator';
+import CsvJsonConverter from './pages/CSVtoJson';
+import Stopwatch from './pages/Stopwatch';
+import Countdown from './pages/CountDown';
+import CountdownPage from './pages/CountDown';
+
 const tools = [
   {
     name: 'Minecraft Formatter',
@@ -89,9 +96,9 @@ const tools = [
     gradient: 'from-pink-400 to-blue-500',
   },
   {
-    name: 'Password Generator & Strength Checker',
-    description: 'Generate and check the strength of your passwords',
-    icon: FileText,
+    name: 'Password Generator',
+    description: 'Generate and check password strength',
+    icon: Key,
     path: '/password',
     gradient: 'from-green-400 to-blue-500',
   },
@@ -103,24 +110,80 @@ const tools = [
     gradient: 'from-teal-400 to-indigo-500',
   },
   {
-    name: 'Date & Time Tools',
-    description: 'Countdown Timer, Time Zone Converter, Unix Timestamp Converter',
+    name: 'Timer',
+    description: 'Set countdown timers',
     icon: Clock,
     path: '/timer',
     gradient: 'from-teal-400 to-blue-500',
-  }    
+  },
+  {
+    name: 'Graph Generator',
+    description: 'Create beautiful charts and graphs',
+    icon: LineChart,
+    path: '/graph',
+    gradient: 'from-blue-400 to-purple-500',
+  },
+  {
+    name: 'IP Geolocation',
+    description: 'Get location info from IP addresses',
+    icon: Globe,
+    path: '/ip',
+    gradient: 'from-green-400 to-teal-500',
+  },
+  {
+    name: 'Countdown Timer',
+    description: 'Set a target date and view the countdown',
+    icon: Clock,  
+    path: '/countdown',
+    gradient: 'from-yellow-400 to-red-500',
+  },
+  {
+    name: 'Lorem Ipsum Generator',
+    description: 'Generate placeholder text',
+    icon: FileType,
+    path: '/lorem',
+    gradient: 'from-indigo-400 to-blue-500',
+  },
+  {
+    name: 'Stopwatch',
+    description: 'Precise timing with lap support',
+    icon: Timer,
+    path: '/stopwatch',
+    gradient: 'from-red-400 to-orange-500',
+  },
+  {
+    name: 'Morse Code Translator',
+    description: 'Convert text to/from Morse code',
+    icon: Radio,
+    path: '/morse',
+    gradient: 'from-teal-400 to-green-500',
+  },
+  {
+    name: 'CSV to JSON Converter',
+    description: 'Convert CSV data to JSON format',
+    icon: Table,
+    path: '/csv',
+    gradient: 'from-pink-400 to-purple-500',
+  },
+  {
+    name: 'UUID Generator',
+    description: 'Generate random UUIDs',
+    icon: Key,
+    path: '/uuid',
+    gradient: 'from-blue-400 to-cyan-500',
+  }
 ];
 
 function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+        <div className="text-center my-24">
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-400 text-transparent bg-clip-text">
             TCDev's Toolkit
           </h1>
           <p className="text-gray-400 text-lg">
-            A collection of essential tools for developers
+            A collection of essential tools
           </p>
         </div>
 
@@ -162,7 +225,15 @@ export default function App() {
       <Route path="/markdown" element={<MarkdownEditor />} />
       <Route path="/password" element={<PasswordGenerator />} />
       <Route path="/qrcode" element={<QRCodeGenerator />} />
-      <Route path="/timer" element={<Timer />} />
+      <Route path="/graph" element={<GraphGenerator />} />
+      <Route path="/ip" element={<IpGeolocation />} />
+      <Route path="/lorem" element={<LoremIpsum />} />
+      <Route path="/morse" element={<MorseCode />} />
+      <Route path="/timer" element={<TimerPage />} />
+      <Route path="/uuid" element={<UuidGenerator />} />
+      <Route path="/csv" element={<CsvJsonConverter />} />
+      <Route path="/stopwatch" element={<Stopwatch />} />
+      <Route path="/countdown" element={<CountdownPage />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );

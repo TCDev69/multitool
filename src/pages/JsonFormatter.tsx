@@ -6,23 +6,34 @@ import { Card } from '../components/Card';
 
 export default function JsonFormatter() {
   const [input, setInput] = useState('');
+  const [formattedJson, setFormattedJson] = useState('');
   const [error, setError] = useState('');
- 
-  const formatJson = () => {
+
+  const formatJson = (json: string) => {
     try {
-      if (!input) return '';
-      const parsed = JSON.parse(input);
-      return JSON.stringify(parsed, null, 2);
+      if (!json) return '';
+      const parsed = JSON.parse(json);
+      return JSON.stringify(parsed, null, 2); 
     } catch (e) {
-      setError((e as Error).message);
-      return input;
+      setError('Invalid JSON format');
+      return '';
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newInput = e.target.value;
+    setInput(newInput);
+    setError('');
+    setFormattedJson(formatJson(newInput)); 
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
-        <Link to="/" className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors">
+        <Link
+          to="/"
+          className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Tools
         </Link>
@@ -41,10 +52,7 @@ export default function JsonFormatter() {
               </label>
               <textarea
                 value={input}
-                onChange={(e) => {
-                  setInput(e.target.value);
-                  setError('');
-                }}
+                onChange={handleChange} 
                 className="w-full h-[500px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Paste your JSON here..."
               />
@@ -55,14 +63,14 @@ export default function JsonFormatter() {
                 Formatted Output
               </label>
               <textarea
-                value={formatJson()}
+                value={formattedJson}
                 readOnly
                 className={`w-full h-[500px] bg-gray-900 rounded p-3 font-mono ${
                   error ? 'text-red-400' : 'text-white'
                 }`}
               />
               {error && (
-                <p className="mt-2 text-red-400 text-sm">{error}</p>
+                <p className="mt-2 text-red-400 text-sm">{error}</p> 
               )}
             </div>
           </div>
