@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Download } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
-import QRCode from 'react-qr-code'; 
-import html2canvas from 'html2canvas';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, Download } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
+import QRCode from "react-qr-code";
+import html2canvas from "html2canvas";
 
 export default function QRCodeGenerator() {
-  const [inputText, setInputText] = useState('');
-  const [qrValue, setQrValue] = useState('');
+  const [inputText, setInputText] = useState("");
+  const [qrValue, setQrValue] = useState("");
   const maxLength = 1852;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,16 +21,16 @@ export default function QRCodeGenerator() {
   };
 
   const downloadQRCode = () => {
-    const qrCodeElement = document.getElementById('qr-code-svg') as HTMLElement;
+    const qrCodeElement = document.getElementById("qr-code-svg") as HTMLElement;
 
     html2canvas(qrCodeElement, {
-      useCORS: true, 
+      useCORS: true,
       backgroundColor: null,
     }).then((canvas) => {
-      const dataUrl = canvas.toDataURL('image/jpeg', 1.0); 
-      const link = document.createElement('a');
+      const dataUrl = canvas.toDataURL("image/jpeg", 1.0);
+      const link = document.createElement("a");
       link.href = dataUrl;
-      link.download = 'qrcode.jpg'; 
+      link.download = "qrcode.jpg";
       link.click();
     });
   };

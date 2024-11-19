@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeftRight, ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeftRight, ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function UnitConverter() {
-  const [inputValue, setInputValue] = useState('');
-  const [outputValue, setOutputValue] = useState('');
-  const [unitType, setUnitType] = useState<'length' | 'weight' | 'temperature' | 'volume'>('length');
-  const [fromUnit, setFromUnit] = useState<string>('centimeter');
-  const [toUnit, setToUnit] = useState<string>('meter');
+  const [inputValue, setInputValue] = useState("");
+  const [outputValue, setOutputValue] = useState("");
+  const [unitType, setUnitType] = useState<
+    "length" | "weight" | "temperature" | "volume"
+  >("length");
+  const [fromUnit, setFromUnit] = useState<string>("centimeter");
+  const [toUnit, setToUnit] = useState<string>("meter");
 
   const swapUnits = () => {
     setFromUnit(toUnit);
@@ -19,13 +21,13 @@ export default function UnitConverter() {
   const convert = () => {
     let value = parseFloat(inputValue);
     if (isNaN(value)) {
-      setOutputValue('');
+      setOutputValue("");
       return;
     }
-  
+
     let result: number = 0;
-  
-    if (unitType === 'length') {
+
+    if (unitType === "length") {
       const conversions = {
         millimeter: 1,
         centimeter: 10,
@@ -38,8 +40,8 @@ export default function UnitConverter() {
       };
       result = (value * conversions[fromUnit]) / conversions[toUnit];
     }
-  
-    if (unitType === 'weight') {
+
+    if (unitType === "weight") {
       const conversions = {
         milligram: 1,
         gram: 1000,
@@ -48,32 +50,32 @@ export default function UnitConverter() {
         ounce: 28349.5,
         pound: 453592,
       };
-  
+
       const fromBaseUnit = conversions[fromUnit] || 1;
       const toBaseUnit = conversions[toUnit] || 1;
-  
+
       result = (value * fromBaseUnit) / toBaseUnit;
     }
-  
-if (unitType === 'temperature') {
-    let baseValue = value;
-  
-    if (fromUnit === 'fahrenheit') {
-      baseValue = (value - 32) * 5 / 9;
-    } else if (fromUnit === 'kelvin') {
-      baseValue = value - 273.15; 
-    }
-  
-    if (toUnit === 'fahrenheit') {
-      result = (baseValue * 9) / 5 + 32;
-    } else if (toUnit === 'kelvin') {
-      result = baseValue + 273.15;
-    } else {
-      result = baseValue; 
-    }
-  }
 
-  if (unitType === 'volume') {
+    if (unitType === "temperature") {
+      let baseValue = value;
+
+      if (fromUnit === "fahrenheit") {
+        baseValue = ((value - 32) * 5) / 9;
+      } else if (fromUnit === "kelvin") {
+        baseValue = value - 273.15;
+      }
+
+      if (toUnit === "fahrenheit") {
+        result = (baseValue * 9) / 5 + 32;
+      } else if (toUnit === "kelvin") {
+        result = baseValue + 273.15;
+      } else {
+        result = baseValue;
+      }
+    }
+
+    if (unitType === "volume") {
       const conversions = {
         milliliter: 1,
         liter: 1000,
@@ -86,16 +88,20 @@ if (unitType === 'temperature') {
         tablespoon: 14.7868,
         teaspoon: 4.92892,
       };
-  
+
       const fromBaseUnit = conversions[fromUnit] || 1;
       const toBaseUnit = conversions[toUnit] || 1;
-  
+
       result = (value * fromBaseUnit) / toBaseUnit;
     }
-  
-    setOutputValue(result % 1 === 0 ? result.toString() : result.toFixed(4).replace(/\.?0+$/, ''));
+
+    setOutputValue(
+      result % 1 === 0
+        ? result.toString()
+        : result.toFixed(4).replace(/\.?0+$/, "")
+    );
   };
-  
+
   React.useEffect(() => {
     convert();
   }, [inputValue, fromUnit, toUnit, unitType]);
@@ -126,33 +132,41 @@ if (unitType === 'temperature') {
               <div className="flex justify-between items-center mb-4">
                 <div className="flex gap-4">
                   <button
-                    onClick={() => setUnitType('length')}
+                    onClick={() => setUnitType("length")}
                     className={`px-4 py-2 rounded ${
-                      unitType === 'length' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-300'
+                      unitType === "length"
+                        ? "bg-orange-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Length
                   </button>
                   <button
-                    onClick={() => setUnitType('weight')}
+                    onClick={() => setUnitType("weight")}
                     className={`px-4 py-2 rounded ${
-                      unitType === 'weight' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-300'
+                      unitType === "weight"
+                        ? "bg-orange-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Weight
                   </button>
                   <button
-                    onClick={() => setUnitType('temperature')}
+                    onClick={() => setUnitType("temperature")}
                     className={`px-4 py-2 rounded ${
-                      unitType === 'temperature' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-300'
+                      unitType === "temperature"
+                        ? "bg-orange-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Temperature
                   </button>
                   <button
-                    onClick={() => setUnitType('volume')}
+                    onClick={() => setUnitType("volume")}
                     className={`px-4 py-2 rounded ${
-                      unitType === 'volume' ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-300'
+                      unitType === "volume"
+                        ? "bg-orange-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Volume
@@ -168,7 +182,9 @@ if (unitType === 'temperature') {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Input Value</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Input Value
+              </label>
               <input
                 type="number"
                 value={inputValue}
@@ -180,14 +196,16 @@ if (unitType === 'temperature') {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">From Unit</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  From Unit
+                </label>
                 <select
                   value={fromUnit}
                   onChange={(e) => setFromUnit(e.target.value)}
                   className="w-full bg-gray-900 text-white font-mono p-3 rounded focus:ring-2 focus:ring-orange-500"
                 >
                   <optgroup label="Metrico">
-                    {unitType === 'length' && (
+                    {unitType === "length" && (
                       <>
                         <option value="millimeter">Millimeter</option>
                         <option value="centimeter">Centimeter</option>
@@ -195,21 +213,21 @@ if (unitType === 'temperature') {
                         <option value="kilometer">Kilometer</option>
                       </>
                     )}
-                    {unitType === 'weight' && (
+                    {unitType === "weight" && (
                       <>
                         <option value="milligram">Milligram</option>
                         <option value="gram">Gram</option>
                         <option value="kilogram">Kilogram</option>
                       </>
                     )}
-                    {unitType === 'temperature' && (
+                    {unitType === "temperature" && (
                       <>
                         <option value="celsius">Celsius</option>
                         <option value="fahrenheit">Fahrenheit</option>
                         <option value="kelvin">Kelvin</option>
                       </>
                     )}
-                    {unitType === 'volume' && (
+                    {unitType === "volume" && (
                       <>
                         <option value="milliliter">Milliliter</option>
                         <option value="liter">Liter</option>
@@ -219,7 +237,7 @@ if (unitType === 'temperature') {
                   </optgroup>
 
                   <optgroup label="Imperiale">
-                    {unitType === 'length' && (
+                    {unitType === "length" && (
                       <>
                         <option value="inch">Inch</option>
                         <option value="foot">Foot</option>
@@ -227,18 +245,18 @@ if (unitType === 'temperature') {
                         <option value="mile">Mile</option>
                       </>
                     )}
-                    {unitType === 'weight' && (
+                    {unitType === "weight" && (
                       <>
                         <option value="ounce">Ounce</option>
                         <option value="pound">Pound</option>
                       </>
                     )}
-                    {unitType === 'temperature' && (
+                    {unitType === "temperature" && (
                       <>
                         <option value="fahrenheit">Fahrenheit</option>
                       </>
                     )}
-                    {unitType === 'volume' && (
+                    {unitType === "volume" && (
                       <>
                         <option value="cubic_inch">Cubic Inch</option>
                         <option value="gallon">Gallon</option>
@@ -249,14 +267,16 @@ if (unitType === 'temperature') {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">To Unit</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  To Unit
+                </label>
                 <select
                   value={toUnit}
                   onChange={(e) => setToUnit(e.target.value)}
                   className="w-full bg-gray-900 text-white font-mono p-3 rounded focus:ring-2 focus:ring-orange-500"
                 >
                   <optgroup label="Metrico">
-                    {unitType === 'length' && (
+                    {unitType === "length" && (
                       <>
                         <option value="millimeter">Millimeter</option>
                         <option value="centimeter">Centimeter</option>
@@ -264,21 +284,21 @@ if (unitType === 'temperature') {
                         <option value="kilometer">Kilometer</option>
                       </>
                     )}
-                    {unitType === 'weight' && (
+                    {unitType === "weight" && (
                       <>
                         <option value="milligram">Milligram</option>
                         <option value="gram">Gram</option>
                         <option value="kilogram">Kilogram</option>
                       </>
                     )}
-                    {unitType === 'temperature' && (
+                    {unitType === "temperature" && (
                       <>
                         <option value="celsius">Celsius</option>
                         <option value="fahrenheit">Fahrenheit</option>
                         <option value="kelvin">Kelvin</option>
                       </>
                     )}
-                    {unitType === 'volume' && (
+                    {unitType === "volume" && (
                       <>
                         <option value="milliliter">Milliliter</option>
                         <option value="liter">Liter</option>
@@ -288,7 +308,7 @@ if (unitType === 'temperature') {
                   </optgroup>
 
                   <optgroup label="Imperiale">
-                    {unitType === 'length' && (
+                    {unitType === "length" && (
                       <>
                         <option value="inch">Inch</option>
                         <option value="foot">Foot</option>
@@ -296,18 +316,18 @@ if (unitType === 'temperature') {
                         <option value="mile">Mile</option>
                       </>
                     )}
-                    {unitType === 'weight' && (
+                    {unitType === "weight" && (
                       <>
                         <option value="ounce">Ounce</option>
                         <option value="pound">Pound</option>
                       </>
                     )}
-                    {unitType === 'temperature' && (
+                    {unitType === "temperature" && (
                       <>
                         <option value="fahrenheit">Fahrenheit</option>
                       </>
                     )}
-                    {unitType === 'volume' && (
+                    {unitType === "volume" && (
                       <>
                         <option value="cubic_inch">Cubic Inch</option>
                         <option value="gallon">Gallon</option>
@@ -319,7 +339,9 @@ if (unitType === 'temperature') {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Output Value</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Output Value
+              </label>
               <input
                 type="text"
                 value={outputValue}

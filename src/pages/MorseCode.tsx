@@ -1,49 +1,91 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowDownUp } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowDownUp } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 const MORSE_CODE: { [key: string]: string } = {
-  'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
-  'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
-  'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
-  'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-  'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
-  '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-  '9': '----.', '0': '-----', '.': '.-.-.-', ',': '--..--',
-  '?': '..--..', '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-',
-  '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.',
-  '-': '-....-', '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.',
-  ' ': '/'
+  A: ".-",
+  B: "-...",
+  C: "-.-.",
+  D: "-..",
+  E: ".",
+  F: "..-.",
+  G: "--.",
+  H: "....",
+  I: "..",
+  J: ".---",
+  K: "-.-",
+  L: ".-..",
+  M: "--",
+  N: "-.",
+  O: "---",
+  P: ".--.",
+  Q: "--.-",
+  R: ".-.",
+  S: "...",
+  T: "-",
+  U: "..-",
+  V: "...-",
+  W: ".--",
+  X: "-..-",
+  Y: "-.--",
+  Z: "--..",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  "0": "-----",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "!": "-.-.--",
+  "/": "-..-.",
+  "(": "-.--.",
+  ")": "-.--.-",
+  "&": ".-...",
+  ":": "---...",
+  ";": "-.-.-.",
+  "=": "-...-",
+  "+": ".-.-.",
+  "-": "-....-",
+  _: "..--.-",
+  '"': ".-..-.",
+  $: "...-..-",
+  "@": ".--.-.",
+  " ": "/",
 };
 
-const REVERSE_MORSE: { [key: string]: string } = Object.entries(MORSE_CODE).reduce(
-  (acc, [char, morse]) => ({ ...acc, [morse]: char }),
-  {}
-);
+const REVERSE_MORSE: { [key: string]: string } = Object.entries(
+  MORSE_CODE
+).reduce((acc, [char, morse]) => ({ ...acc, [morse]: char }), {});
 
 export default function MorseCode() {
-  const [input, setInput] = useState('');
-  const [mode, setMode] = useState<'encode' | 'decode'>('encode');
+  const [input, setInput] = useState("");
+  const [mode, setMode] = useState<"encode" | "decode">("encode");
 
   const convertToMorse = (text: string): string => {
     return text
       .toUpperCase()
-      .split('')
-      .map(char => MORSE_CODE[char] || char)
-      .join(' ');
+      .split("")
+      .map((char) => MORSE_CODE[char] || char)
+      .join(" ");
   };
 
   const convertFromMorse = (morse: string): string => {
     return morse
-      .split(' ')
-      .map(code => REVERSE_MORSE[code] || code)
-      .join('');
+      .split(" ")
+      .map((code) => REVERSE_MORSE[code] || code)
+      .join("");
   };
 
   const handleConvert = () => {
-    if (mode === 'encode') {
+    if (mode === "encode") {
       return convertToMorse(input);
     } else {
       return convertFromMorse(input);
@@ -51,8 +93,8 @@ export default function MorseCode() {
   };
 
   const toggleMode = () => {
-    setMode(mode === 'encode' ? 'decode' : 'encode');
-    setInput('');
+    setMode(mode === "encode" ? "decode" : "encode");
+    setInput("");
   };
 
   return (
@@ -76,7 +118,7 @@ export default function MorseCode() {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">
-                {mode === 'encode' ? 'Text to Morse' : 'Morse to Text'}
+                {mode === "encode" ? "Text to Morse" : "Morse to Text"}
               </h2>
               <button
                 onClick={toggleMode}
@@ -96,9 +138,9 @@ export default function MorseCode() {
                 onChange={(e) => setInput(e.target.value)}
                 className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
                 placeholder={
-                  mode === 'encode'
-                    ? 'Enter text to convert to Morse code...'
-                    : 'Enter Morse code to convert to text...'
+                  mode === "encode"
+                    ? "Enter text to convert to Morse code..."
+                    : "Enter Morse code to convert to text..."
                 }
               />
             </div>
@@ -120,7 +162,7 @@ export default function MorseCode() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-sm">
                 {Object.entries(MORSE_CODE)
-                  .filter(([char]) => char !== ' ')
+                  .filter(([char]) => char !== " ")
                   .map(([char, code]) => (
                     <div
                       key={char}

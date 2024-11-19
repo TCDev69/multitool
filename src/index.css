@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Minecraft';
-  src: url('https://cdn.jsdelivr.net/gh/South-Paw/typeface-minecraft@master/font/minecraft.woff2')
-    format('woff2');
+  font-family: "Minecraft";
+  src: url("https://cdn.jsdelivr.net/gh/South-Paw/typeface-minecraft@master/font/minecraft.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-.font-minecraft { 
-  font-family: 'Minecraft', monospace;
+.font-minecraft {
+  font-family: "Minecraft", monospace;
   letter-spacing: 0.025em;
   line-height: 1.5;
 }
@@ -39,7 +39,7 @@ h1 {
   color: #fff;
 }
 
-input[type='color'] {
+input[type="color"] {
   -webkit-appearance: none;
   appearance: none;
   border: none;
@@ -49,7 +49,7 @@ input[type='color'] {
   padding: 0;
 }
 
-input[type='color']:focus {
+input[type="color"]:focus {
   outline: none;
 }
 

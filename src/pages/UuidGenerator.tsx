@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, RefreshCw, Save } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, RefreshCw, Save } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
+import { v4 as uuidv4 } from "uuid";
 
 export default function UuidGenerator() {
   const [uuids, setUuids] = useState<string[]>([uuidv4()]);
@@ -22,11 +22,11 @@ export default function UuidGenerator() {
   };
 
   const saveToFile = () => {
-    const blob = new Blob([uuids.join('\n')], { type: 'text/plain' });
+    const blob = new Blob([uuids.join("\n")], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
-    link.download = 'uuids.txt';
+    link.download = "uuids.txt";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -34,7 +34,7 @@ export default function UuidGenerator() {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       generateUuids();
     }
   };
@@ -96,7 +96,7 @@ export default function UuidGenerator() {
                 >
                   <code className="font-mono">{uuid}</code>
                   <span className="text-sm text-gray-400">
-                    {copied === uuid ? 'Copied!' : 'Click to copy'}
+                    {copied === uuid ? "Copied!" : "Click to copy"}
                   </span>
                 </div>
               ))}

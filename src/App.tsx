@@ -1,177 +1,198 @@
-import { Route, Routes, Link } from 'react-router-dom';
-import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key } from 'lucide-react';
-import { motion } from 'framer-motion';
-import MinecraftFormatter from './pages/MinecraftFormatter';
-import Base64Converter from './pages/Base64Converter';
-import HashGenerator from './pages/HashGenerator';
-import JsonFormatter from './pages/JsonFormatter';
-import UrlEncoder from './pages/UrlEncoder';
-import TextTools from './pages/TextTools';
-import YamlValidator from './pages/YamlValidator';
-import NumberConverter from './pages/NumberCoverter';
-import UnitConverter from './pages/UnitConverter';
-import MarkdownEditor from './pages/Markdown';
-import PasswordGenerator from './pages/PasswordGenerator';
-import QRCodeGenerator from './pages/QRCodeGenerator';
-import TimerPage from './pages/Timer';
-import GraphGenerator from './pages/GraphGenerator';
-import IpGeolocation from './pages/IpGeolocation';
-import LoremIpsum from './pages/LoremIpsum';
-import MorseCode from './pages/MorseCode';
-import UuidGenerator from './pages/UuidGenerator';
-import CsvJsonConverter from './pages/CSVtoJson';
-import Stopwatch from './pages/Stopwatch';
-import Countdown from './pages/CountDown';
-import CountdownPage from './pages/CountDown';
+import { Route, Routes, Link } from "react-router-dom";
+import {
+  Palette,
+  Terminal,
+  Hash,
+  Braces,
+  Code2,
+  Wand2,
+  FileJson,
+  FileText,
+  FileDigit,
+  Ruler,
+  ScanLine,
+  Clock,
+  LineChart,
+  Globe,
+  AlarmClock,
+  FileType,
+  Timer,
+  Radio,
+  Table,
+  Key,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import MinecraftFormatter from "./pages/MinecraftFormatter";
+import Base64Converter from "./pages/Base64Converter";
+import HashGenerator from "./pages/HashGenerator";
+import JsonFormatter from "./pages/JsonFormatter";
+import UrlEncoder from "./pages/UrlEncoder";
+import TextTools from "./pages/TextTools";
+import YamlValidator from "./pages/YamlValidator";
+import NumberConverter from "./pages/NumberCoverter";
+import UnitConverter from "./pages/UnitConverter";
+import MarkdownEditor from "./pages/Markdown";
+import PasswordGenerator from "./pages/PasswordGenerator";
+import QRCodeGenerator from "./pages/QRCodeGenerator";
+import TimerPage from "./pages/Timer";
+import GraphGenerator from "./pages/GraphGenerator";
+import IpGeolocation from "./pages/IpGeolocation";
+import LoremIpsum from "./pages/LoremIpsum";
+import MorseCode from "./pages/MorseCode";
+import UuidGenerator from "./pages/UuidGenerator";
+import CsvJsonConverter from "./pages/CSVtoJson";
+import Stopwatch from "./pages/Stopwatch";
+import Countdown from "./pages/CountDown";
+import CountdownPage from "./pages/CountDown";
 
 const tools = [
   {
-    name: 'Minecraft Formatter',
-    description: 'Format text with Minecraft color codes and hex colors',
+    name: "Minecraft Formatter",
+    description: "Format text with Minecraft color codes and hex colors",
     icon: Palette,
-    path: '/minecraft-formatter',
-    gradient: 'from-green-400 to-blue-500',
+    path: "/minecraft-formatter",
+    gradient: "from-green-400 to-blue-500",
   },
   {
-    name: 'Base64 Converter',
-    description: 'Encode and decode Base64 strings',
+    name: "Base64 Converter",
+    description: "Encode and decode Base64 strings",
     icon: Terminal,
-    path: '/base64',
-    gradient: 'from-purple-400 to-pink-500',
+    path: "/base64",
+    gradient: "from-purple-400 to-pink-500",
   },
   {
-    name: 'Hash Generator',
-    description: 'Generate various hash formats',
+    name: "Hash Generator",
+    description: "Generate various hash formats",
     icon: Hash,
-    path: '/hash',
-    gradient: 'from-yellow-400 to-orange-500',
+    path: "/hash",
+    gradient: "from-yellow-400 to-orange-500",
   },
   {
-    name: 'JSON Formatter',
-    description: 'Format and validate JSON data',
+    name: "JSON Formatter",
+    description: "Format and validate JSON data",
     icon: Braces,
-    path: '/json',
-    gradient: 'from-blue-400 to-indigo-500',
+    path: "/json",
+    gradient: "from-blue-400 to-indigo-500",
   },
   {
-    name: 'URL Encoder',
-    description: 'Encode and decode URLs',
+    name: "URL Encoder",
+    description: "Encode and decode URLs",
     icon: Code2,
-    path: '/url',
-    gradient: 'from-red-400 to-pink-500',
+    path: "/url",
+    gradient: "from-red-400 to-pink-500",
   },
   {
-    name: 'Text Tools',
-    description: 'Various text manipulation tools',
+    name: "Text Tools",
+    description: "Various text manipulation tools",
     icon: Wand2,
-    path: '/text',
-    gradient: 'from-teal-400 to-cyan-500',
+    path: "/text",
+    gradient: "from-teal-400 to-cyan-500",
   },
   {
-    name: 'YAML Validator',
-    description: 'Convert between YAML and JSON formats',
+    name: "YAML Validator",
+    description: "Convert between YAML and JSON formats",
     icon: FileJson,
-    path: '/yaml',
-    gradient: 'from-emerald-400 to-green-500',
+    path: "/yaml",
+    gradient: "from-emerald-400 to-green-500",
   },
   {
-    name: 'Number Converter',
-    description: 'Convert numbers in different formats',
+    name: "Number Converter",
+    description: "Convert numbers in different formats",
     icon: FileDigit,
-    path: '/number',
-    gradient: 'from-indigo-400 to-purple-500',
+    path: "/number",
+    gradient: "from-indigo-400 to-purple-500",
   },
   {
-    name: 'Unit Converter',
-    description: 'Convert length, weight and temperature',
+    name: "Unit Converter",
+    description: "Convert length, weight and temperature",
     icon: Ruler,
-    path: '/unit',
-    gradient: 'from-orange-400 to-red-500',
+    path: "/unit",
+    gradient: "from-orange-400 to-red-500",
   },
   {
-    name: 'Markdown Editor',
-    description: 'Write and preview your Markdown content',
+    name: "Markdown Editor",
+    description: "Write and preview your Markdown content",
     icon: FileText,
-    path: '/markdown',
-    gradient: 'from-pink-400 to-blue-500',
+    path: "/markdown",
+    gradient: "from-pink-400 to-blue-500",
   },
   {
-    name: 'Password Generator',
-    description: 'Generate and check password strength',
+    name: "Password Generator",
+    description: "Generate and check password strength",
     icon: Key,
-    path: '/password',
-    gradient: 'from-green-400 to-blue-500',
+    path: "/password",
+    gradient: "from-green-400 to-blue-500",
   },
   {
-    name: 'QR Code Generator',
-    description: 'Generate QR codes from any text',
+    name: "QR Code Generator",
+    description: "Generate QR codes from any text",
     icon: ScanLine,
-    path: '/qrcode',
-    gradient: 'from-teal-400 to-indigo-500',
+    path: "/qrcode",
+    gradient: "from-teal-400 to-indigo-500",
   },
   {
-    name: 'Timer',
-    description: 'Set countdown timers',
+    name: "Timer",
+    description: "Set countdown timers",
     icon: Clock,
-    path: '/timer',
-    gradient: 'from-teal-400 to-blue-500',
+    path: "/timer",
+    gradient: "from-teal-400 to-blue-500",
   },
   {
-    name: 'Graph Generator',
-    description: 'Create beautiful charts and graphs',
+    name: "Graph Generator",
+    description: "Create beautiful charts and graphs",
     icon: LineChart,
-    path: '/graph',
-    gradient: 'from-blue-400 to-purple-500',
+    path: "/graph",
+    gradient: "from-blue-400 to-purple-500",
   },
   {
-    name: 'IP Geolocation',
-    description: 'Get location info from IP addresses',
+    name: "IP Geolocation",
+    description: "Get location info from IP addresses",
     icon: Globe,
-    path: '/ip',
-    gradient: 'from-green-400 to-teal-500',
+    path: "/ip",
+    gradient: "from-green-400 to-teal-500",
   },
   {
-    name: 'Countdown Timer',
-    description: 'Set a target date and view the countdown',
-    icon: AlarmClock,  
-    path: '/countdown',
-    gradient: 'from-yellow-400 to-red-500',
+    name: "Countdown Timer",
+    description: "Set a target date and view the countdown",
+    icon: AlarmClock,
+    path: "/countdown",
+    gradient: "from-yellow-400 to-red-500",
   },
   {
-    name: 'Lorem Ipsum Generator',
-    description: 'Generate placeholder text',
+    name: "Lorem Ipsum Generator",
+    description: "Generate placeholder text",
     icon: FileType,
-    path: '/lorem',
-    gradient: 'from-indigo-400 to-blue-500',
+    path: "/lorem",
+    gradient: "from-indigo-400 to-blue-500",
   },
   {
-    name: 'Stopwatch',
-    description: 'Precise timing with lap support',
+    name: "Stopwatch",
+    description: "Precise timing with lap support",
     icon: Timer,
-    path: '/stopwatch',
-    gradient: 'from-red-400 to-orange-500',
+    path: "/stopwatch",
+    gradient: "from-red-400 to-orange-500",
   },
   {
-    name: 'Morse Code Translator',
-    description: 'Convert text to/from Morse code',
+    name: "Morse Code Translator",
+    description: "Convert text to/from Morse code",
     icon: Radio,
-    path: '/morse',
-    gradient: 'from-teal-400 to-green-500',
+    path: "/morse",
+    gradient: "from-teal-400 to-green-500",
   },
   {
-    name: 'CSV to JSON Converter',
-    description: 'Convert CSV data to JSON format',
+    name: "CSV to JSON Converter",
+    description: "Convert CSV data to JSON format",
     icon: Table,
-    path: '/csv',
-    gradient: 'from-pink-400 to-purple-500',
+    path: "/csv",
+    gradient: "from-pink-400 to-purple-500",
   },
   {
-    name: 'UUID Generator',
-    description: 'Generate random UUIDs',
+    name: "UUID Generator",
+    description: "Generate random UUIDs",
     icon: Key,
-    path: '/uuid',
-    gradient: 'from-blue-400 to-cyan-500',
-  }
+    path: "/uuid",
+    gradient: "from-blue-400 to-cyan-500",
+  },
 ];
 
 function HomePage() {

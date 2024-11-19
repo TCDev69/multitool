@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Search } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, Search } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 interface GeoData {
   ip: string;
@@ -16,7 +16,7 @@ interface GeoData {
 }
 
 export default function IpGeolocation() {
-  const [ip, setIp] = useState('');
+  const [ip, setIp] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [geoData, setGeoData] = useState<GeoData | null>(null);
@@ -32,17 +32,17 @@ export default function IpGeolocation() {
     setError(null);
     try {
       const response = await fetch(`https://ipinfo.io/${queryIp}/json`);
-      if (!response.ok) throw new Error('Failed to fetch IP data');
+      if (!response.ok) throw new Error("Failed to fetch IP data");
       const data = await response.json();
       setGeoData(data);
     } catch (err) {
       const errorMessage = (err as Error).message;
-      if (errorMessage.includes('Failed to fetch')) {
+      if (errorMessage.includes("Failed to fetch")) {
         setError(
-          'Unable to fetch IP data. Please disable your adblocker and try again.'
+          "Unable to fetch IP data. Please disable your adblocker and try again."
         );
       } else {
-        setError('An unexpected error occurred. Please try again later.');
+        setError("An unexpected error occurred. Please try again later.");
       }
       setGeoData(null);
     } finally {
@@ -55,7 +55,7 @@ export default function IpGeolocation() {
     if (!ip.trim()) return;
 
     if (!isValidIp(ip)) {
-      setError('The IP address you entered is not valid.');
+      setError("The IP address you entered is not valid.");
       return;
     }
 
@@ -65,12 +65,12 @@ export default function IpGeolocation() {
   useEffect(() => {
     const fetchUserIp = async () => {
       try {
-        const response = await fetch('https://api64.ipify.org?format=json');
+        const response = await fetch("https://api64.ipify.org?format=json");
         const data = await response.json();
-        setIp(data.ip); 
-        fetchGeoData(data.ip); 
+        setIp(data.ip);
+        fetchGeoData(data.ip);
       } catch (err) {
-        setError('Unable to fetch your IP address.');
+        setError("Unable to fetch your IP address.");
       }
     };
 
@@ -113,7 +113,7 @@ export default function IpGeolocation() {
                   disabled={loading}
                   className="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600 transition-colors disabled:bg-gray-600"
                 >
-                  {loading ? 'Loading...' : <Search className="h-5 w-5" />}
+                  {loading ? "Loading..." : <Search className="h-5 w-5" />}
                 </button>
               </div>
             </div>

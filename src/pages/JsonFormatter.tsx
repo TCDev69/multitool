@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function JsonFormatter() {
-  const [input, setInput] = useState('');
-  const [formattedJson, setFormattedJson] = useState('');
-  const [error, setError] = useState('');
+  const [input, setInput] = useState("");
+  const [formattedJson, setFormattedJson] = useState("");
+  const [error, setError] = useState("");
 
   const formatJson = (json: string) => {
     try {
-      if (!json) return '';
+      if (!json) return "";
       const parsed = JSON.parse(json);
-      return JSON.stringify(parsed, null, 2); 
+      return JSON.stringify(parsed, null, 2);
     } catch (e) {
-      setError('Invalid JSON format');
-      return '';
+      setError("Invalid JSON format");
+      return "";
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newInput = e.target.value;
     setInput(newInput);
-    setError('');
-    setFormattedJson(formatJson(newInput)); 
+    setError("");
+    setFormattedJson(formatJson(newInput));
   };
 
   return (
@@ -52,7 +52,7 @@ export default function JsonFormatter() {
               </label>
               <textarea
                 value={input}
-                onChange={handleChange} 
+                onChange={handleChange}
                 className="w-full h-[500px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Paste your JSON here..."
               />
@@ -66,12 +66,10 @@ export default function JsonFormatter() {
                 value={formattedJson}
                 readOnly
                 className={`w-full h-[500px] bg-gray-900 rounded p-3 font-mono ${
-                  error ? 'text-red-400' : 'text-white'
+                  error ? "text-red-400" : "text-white"
                 }`}
               />
-              {error && (
-                <p className="mt-2 text-red-400 text-sm">{error}</p> 
-              )}
+              {error && <p className="mt-2 text-red-400 text-sm">{error}</p>}
             </div>
           </div>
         </Card>

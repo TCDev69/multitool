@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
-import * as cryptoJS from 'crypto-js';
-import { blake2b, blake2s } from 'blakejs';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
+import * as cryptoJS from "crypto-js";
+import { blake2b, blake2s } from "blakejs";
 
 export default function HashGenerator() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [hashes, setHashes] = useState<Record<string, string>>({
-    'SHA-256': '',
-    'SHA-384': '',
-    'SHA-512': '',
-    'SHA-1': '',
-    'SHA-224': '',
-    'MD5': '',
-    'RIPEMD-160': '',
-    'BLAKE2b': '',
-    'BLAKE2s': '',
+    "SHA-256": "",
+    "SHA-384": "",
+    "SHA-512": "",
+    "SHA-1": "",
+    "SHA-224": "",
+    MD5: "",
+    "RIPEMD-160": "",
+    BLAKE2b: "",
+    BLAKE2s: "",
   });
   const [copiedHash, setCopiedHash] = useState<string | null>(null);
- 
+
   useEffect(() => {
     const updateHashes = async () => {
       if (!input) {
         setHashes({
-          'SHA-256': '',
-          'SHA-384': '',
-          'SHA-512': '',
-          'SHA-1': '',
-          'SHA-224': '',
-          'MD5': '',
-          'RIPEMD-160': '',
-          'BLAKE2b': '',
-          'BLAKE2s': '',
+          "SHA-256": "",
+          "SHA-384": "",
+          "SHA-512": "",
+          "SHA-1": "",
+          "SHA-224": "",
+          MD5: "",
+          "RIPEMD-160": "",
+          BLAKE2b: "",
+          BLAKE2s: "",
         });
         return;
       }
@@ -41,11 +41,11 @@ export default function HashGenerator() {
       const newHashes: Record<string, string> = {};
 
       for (const algorithm of [
-        'SHA-1',
-        'SHA-224',
-        'SHA-256',
-        'SHA-384',
-        'SHA-512',
+        "SHA-1",
+        "SHA-224",
+        "SHA-256",
+        "SHA-384",
+        "SHA-512",
       ]) {
         try {
           const encoder = new TextEncoder();
@@ -53,31 +53,35 @@ export default function HashGenerator() {
           const hashBuffer = await crypto.subtle.digest(algorithm, data);
           const hashArray = Array.from(new Uint8Array(hashBuffer));
           newHashes[algorithm] = hashArray
-            .map((b) => b.toString(16).padStart(2, '0'))
-            .join('');
+            .map((b) => b.toString(16).padStart(2, "0"))
+            .join("");
         } catch (e) {
-          newHashes[algorithm] = 'Error generating hash';
+          newHashes[algorithm] = "Error generating hash";
         }
       }
 
       try {
-        newHashes['SHA-224'] = cryptoJS.SHA224(input).toString(cryptoJS.enc.Hex);
+        newHashes["SHA-224"] = cryptoJS
+          .SHA224(input)
+          .toString(cryptoJS.enc.Hex);
       } catch (e) {
-        newHashes['SHA-224'] = 'Error generating hash';
+        newHashes["SHA-224"] = "Error generating hash";
       }
 
-      newHashes['MD5'] = cryptoJS.MD5(input).toString(cryptoJS.enc.Hex);
-      newHashes['RIPEMD-160'] = cryptoJS.RIPEMD160(input).toString(cryptoJS.enc.Hex);
+      newHashes["MD5"] = cryptoJS.MD5(input).toString(cryptoJS.enc.Hex);
+      newHashes["RIPEMD-160"] = cryptoJS
+        .RIPEMD160(input)
+        .toString(cryptoJS.enc.Hex);
 
       try {
-        newHashes['BLAKE2b'] = blake2b(input).toString();
+        newHashes["BLAKE2b"] = blake2b(input).toString();
       } catch (e) {
-        newHashes['BLAKE2b'] = 'Error generating hash';
+        newHashes["BLAKE2b"] = "Error generating hash";
       }
       try {
-        newHashes['BLAKE2s'] = blake2s(input).toString();
+        newHashes["BLAKE2s"] = blake2s(input).toString();
       } catch (e) {
-        newHashes['BLAKE2s'] = 'Error generating hash';
+        newHashes["BLAKE2s"] = "Error generating hash";
       }
 
       setHashes(newHashes);
@@ -91,7 +95,7 @@ export default function HashGenerator() {
 
     navigator.clipboard.writeText(hash).then(() => {
       setCopiedHash(hash);
-      setTimeout(() => setCopiedHash(null), 2000); 
+      setTimeout(() => setCopiedHash(null), 2000);
     });
   };
 

@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function NumberConverter() {
-  const [input, setInput] = useState('');
-  const [base, setBase] = useState<'binary' | 'octal' | 'decimal' | 'hex'>('decimal');
+  const [input, setInput] = useState("");
+  const [base, setBase] = useState<"binary" | "octal" | "decimal" | "hex">(
+    "decimal"
+  );
 
   const convertNumber = (number: string, base: string) => {
     try {
-      const decimalValue = parseInt(number, base === 'binary' ? 2 : base === 'octal' ? 8 : base === 'hex' ? 16 : 10);
+      const decimalValue = parseInt(
+        number,
+        base === "binary" ? 2 : base === "octal" ? 8 : base === "hex" ? 16 : 10
+      );
       return {
         binary: decimalValue.toString(2),
         octal: decimalValue.toString(8),
@@ -62,7 +67,11 @@ export default function NumberConverter() {
               </label>
               <select
                 value={base}
-                onChange={(e) => setBase(e.target.value as 'binary' | 'octal' | 'decimal' | 'hex')}
+                onChange={(e) =>
+                  setBase(
+                    e.target.value as "binary" | "octal" | "decimal" | "hex"
+                  )
+                }
                 className="w-full bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               >
                 <option value="binary">Binary</option>
@@ -90,7 +99,9 @@ export default function NumberConverter() {
                 ))}
               </div>
             ) : (
-              <p className="text-red-400">Invalid input for the selected base.</p>
+              <p className="text-red-400">
+                Invalid input for the selected base.
+              </p>
             )}
           </div>
         </Card>

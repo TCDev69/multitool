@@ -1,36 +1,36 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowDownUp } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowDownUp } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function Base64Converter() {
-  const [input, setInput] = useState('');
-  const [mode, setMode] = useState<'encode' | 'decode'>('encode');
+  const [input, setInput] = useState("");
+  const [mode, setMode] = useState<"encode" | "decode">("encode");
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
   const convert = () => {
     try {
-      if (mode === 'encode') {
+      if (mode === "encode") {
         return btoa(input);
       } else {
         return atob(input);
       }
     } catch (e) {
-      return 'Invalid input';
+      return "Invalid input";
     }
   };
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedText(text);
-      setTimeout(() => setCopiedText(null), 2000); 
+      setTimeout(() => setCopiedText(null), 2000);
     });
   };
 
   const toggleMode = () => {
-    setMode(mode === 'encode' ? 'decode' : 'encode');
-    setInput(''); 
+    setMode(mode === "encode" ? "decode" : "encode");
+    setInput("");
   };
 
   return (
@@ -51,20 +51,20 @@ export default function Base64Converter() {
         />
 
         <Card>
-        <div className="space-y-6">
-  <div className="flex justify-between items-center mb-4">
-    <h2 className="text-xl font-semibold">
-      {mode === 'encode' ? 'Text to Base64' : 'Base64 to Text'}
-    </h2>
-    <button
-      onClick={toggleMode}
-      className="flex items-center gap-2 px-4 py-2 bg-purple-500 rounded hover:bg-purple-600 transition-colors"
-    >
-      <ArrowDownUp className="h-4 w-4" />
-      Switch Mode
-    </button>
-  </div>
-</div>
+          <div className="space-y-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-semibold">
+                {mode === "encode" ? "Text to Base64" : "Base64 to Text"}
+              </h2>
+              <button
+                onClick={toggleMode}
+                className="flex items-center gap-2 px-4 py-2 bg-purple-500 rounded hover:bg-purple-600 transition-colors"
+              >
+                <ArrowDownUp className="h-4 w-4" />
+                Switch Mode
+              </button>
+            </div>
+          </div>
 
           <div className="space-y-4">
             <div>
@@ -75,7 +75,11 @@ export default function Base64Converter() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                placeholder={mode === 'encode' ? 'Enter text to encode...' : 'Enter base64 to decode...'}
+                placeholder={
+                  mode === "encode"
+                    ? "Enter text to encode..."
+                    : "Enter base64 to decode..."
+                }
               />
             </div>
 
@@ -85,9 +89,7 @@ export default function Base64Converter() {
                   Output
                 </label>
                 {copiedText === convert() && (
-                  <span className="text-sm text-green-500">
-                    Copied!
-                  </span>
+                  <span className="text-sm text-green-500">Copied!</span>
                 )}
               </div>
               <div className="relative">

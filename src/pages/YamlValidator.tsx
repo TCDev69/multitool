@@ -1,31 +1,31 @@
-import React, { useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { load as yamlLoad } from 'js-yaml';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import { useState, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { load as yamlLoad } from "js-yaml";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function YamlValidator() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [output, setOutput] = useState('');
- 
+  const [output, setOutput] = useState("");
+
   const handleInputChange = useCallback((value: string) => {
     setInput(value);
     try {
       if (!value.trim()) {
-        setOutput('');
+        setOutput("");
         setError(null);
         return;
       }
 
       yamlLoad(value);
-      setOutput('✔️ The YAML is valid!');
+      setOutput("✔️ The YAML is valid!");
       setError(null);
     } catch (e) {
       const message = formatYamlError(e as Error);
       setError(message);
-      setOutput('');
+      setOutput("");
     }
   }, []);
 
@@ -63,9 +63,12 @@ export default function YamlValidator() {
             </label>
             <div className="relative flex">
               <div className="bg-gray-800 text-gray-500 font-mono text-sm py-3 px-2 text-right select-none">
-                {Array.from({ length: input.split('\n').length || 1 }, (_, i) => (
-                  <div key={i}>{i + 1}</div>
-                ))}
+                {Array.from(
+                  { length: input.split("\n").length || 1 },
+                  (_, i) => (
+                    <div key={i}>{i + 1}</div>
+                  )
+                )}
               </div>
               <textarea
                 value={input}
@@ -74,26 +77,29 @@ export default function YamlValidator() {
                 placeholder="Paste your YAML here..."
                 spellCheck={false}
                 style={{
-                  whiteSpace: 'pre',
-                  lineHeight: '1.5',
+                  whiteSpace: "pre",
+                  lineHeight: "1.5",
                 }}
               />
             </div>
           </div>
 
           <div className="mt-4">
-  <label className="block text-sm font-medium text-gray-300 mb-2">
-    Validation Result
-  </label>
-  <div className="bg-gray-900 rounded p-4 text-white font-mono">
-    {error ? (
-      <pre className="text-red-400 text-sm whitespace-pre-wrap">{error}</pre>
-    ) : (
-      <pre className="text-green-400 text-sm whitespace-pre-wrap">{output}</pre>
-    )}
-  </div>
-</div>
-
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Validation Result
+            </label>
+            <div className="bg-gray-900 rounded p-4 text-white font-mono">
+              {error ? (
+                <pre className="text-red-400 text-sm whitespace-pre-wrap">
+                  {error}
+                </pre>
+              ) : (
+                <pre className="text-green-400 text-sm whitespace-pre-wrap">
+                  {output}
+                </pre>
+              )}
+            </div>
+          </div>
         </Card>
       </div>
     </div>

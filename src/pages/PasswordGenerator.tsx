@@ -1,41 +1,44 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function PasswordGenerator() {
-  const [password, setPassword] = useState('');
-  const [strength, setStrength] = useState('');
+  const [password, setPassword] = useState("");
+  const [strength, setStrength] = useState("");
   const [length, setLength] = useState(12);
 
   const generatePassword = () => {
     const charset =
-      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:,.<>?';
-    let generatedPassword = '';
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+    let generatedPassword = "";
     for (let i = 0; i < length; i++) {
-      generatedPassword += charset.charAt(Math.floor(Math.random() * charset.length));
+      generatedPassword += charset.charAt(
+        Math.floor(Math.random() * charset.length)
+      );
     }
     setPassword(generatedPassword);
     checkStrength(generatedPassword);
   };
 
   const checkStrength = (password: string) => {
-    const regexWeak = /^(?=.*[a-zA-Z0-9]).{6,12}$/; 
-    const regexMedium = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{8,16}$/;
-    const regexStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{16,}$/;
-  
+    const regexWeak = /^(?=.*[a-zA-Z0-9]).{6,12}$/;
+    const regexMedium =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{8,16}$/;
+    const regexStrong =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{16,}$/;
+
     if (regexStrong.test(password)) {
-      setStrength('Strong');
+      setStrength("Strong");
     } else if (regexMedium.test(password)) {
-      setStrength('Medium');
+      setStrength("Medium");
     } else if (regexWeak.test(password)) {
-      setStrength('Weak');
+      setStrength("Weak");
     } else {
-      setStrength('Invalid');
+      setStrength("Invalid");
     }
   };
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
@@ -57,7 +60,9 @@ export default function PasswordGenerator() {
         <Card>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Password Length</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Password Length
+              </label>
               <input
                 type="number"
                 min="6"
@@ -78,7 +83,9 @@ export default function PasswordGenerator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Generated Password</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Generated Password
+              </label>
               <input
                 type="text"
                 value={password}
@@ -88,7 +95,9 @@ export default function PasswordGenerator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Password Strength</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Password Strength
+              </label>
               <input
                 type="text"
                 value={strength}
@@ -102,4 +111,3 @@ export default function PasswordGenerator() {
     </div>
   );
 }
-

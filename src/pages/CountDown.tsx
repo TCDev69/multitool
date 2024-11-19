@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function CountdownPage() {
-  const [targetDate, setTargetDate] = useState('');
+  const [targetDate, setTargetDate] = useState("");
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -15,7 +15,7 @@ export default function CountdownPage() {
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
-    
+
     if (targetDate) {
       timer = setInterval(() => {
         const currentDate = new Date();
@@ -27,8 +27,12 @@ export default function CountdownPage() {
           setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         } else {
           const days = Math.floor(difference / (1000 * 3600 * 24));
-          const hours = Math.floor((difference % (1000 * 3600 * 24)) / (1000 * 3600));
-          const minutes = Math.floor((difference % (1000 * 3600)) / (1000 * 60));
+          const hours = Math.floor(
+            (difference % (1000 * 3600 * 24)) / (1000 * 3600)
+          );
+          const minutes = Math.floor(
+            (difference % (1000 * 3600)) / (1000 * 60)
+          );
           const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
           setCountdown({ days, hours, minutes, seconds });
@@ -39,7 +43,6 @@ export default function CountdownPage() {
     }
 
     return () => clearInterval(timer);
-
   }, [targetDate]);
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,10 +84,11 @@ export default function CountdownPage() {
               <div className="text-2xl font-bold text-gray-300">
                 {targetDate
                   ? `Countdown to: ${new Date(targetDate).toLocaleString()}`
-                  : 'Enter a Date to Start the Countdown'}
+                  : "Enter a Date to Start the Countdown"}
               </div>
               <div className="mt-4 text-6xl font-extrabold text-orange-400">
-                {countdown.days}d : {countdown.hours}h : {countdown.minutes}m : {countdown.seconds}s
+                {countdown.days}d : {countdown.hours}h : {countdown.minutes}m :{" "}
+                {countdown.seconds}s
               </div>
             </div>
           </div>

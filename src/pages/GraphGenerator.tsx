@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Download } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, Download } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,9 +14,9 @@ import {
   Tooltip,
   Legend,
   ArcElement,
-} from 'chart.js';
-import { Line, Bar, Pie } from 'react-chartjs-2';
-import html2canvas from 'html2canvas';
+} from "chart.js";
+import { Line, Bar, Pie } from "react-chartjs-2";
+import html2canvas from "html2canvas";
 
 ChartJS.register(
   CategoryScale,
@@ -30,22 +30,22 @@ ChartJS.register(
   Legend
 );
 
-type ChartType = 'line' | 'bar' | 'pie';
+type ChartType = "line" | "bar" | "pie";
 
 export default function GraphGenerator() {
-  const [chartType, setChartType] = useState<ChartType>('line');
-  const [labels, setLabels] = useState<string>('Jan,Feb,Mar,Apr,May,Jun');
-  const [data, setData] = useState<string>('65,59,80,81,56,55');
-  const [title, setTitle] = useState<string>('Sample Chart');
+  const [chartType, setChartType] = useState<ChartType>("line");
+  const [labels, setLabels] = useState<string>("Jan,Feb,Mar,Apr,May,Jun");
+  const [data, setData] = useState<string>("65,59,80,81,56,55");
+  const [title, setTitle] = useState<string>("Sample Chart");
 
   const chartData = {
-    labels: labels.split(','),
+    labels: labels.split(","),
     datasets: [
       {
-        label: 'Dataset',
-        data: data.split(',').map(Number),
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+        label: "Dataset",
+        data: data.split(",").map(Number),
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(75, 192, 192, 0.5)",
       },
     ],
   };
@@ -54,7 +54,7 @@ export default function GraphGenerator() {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: "top" as const,
       },
       title: {
         display: true,
@@ -65,11 +65,11 @@ export default function GraphGenerator() {
 
   const renderChart = () => {
     switch (chartType) {
-      case 'line':
+      case "line":
         return <Line id="chart-canvas" options={options} data={chartData} />;
-      case 'bar':
+      case "bar":
         return <Bar id="chart-canvas" options={options} data={chartData} />;
-      case 'pie':
+      case "pie":
         return <Pie id="chart-canvas" options={options} data={chartData} />;
       default:
         return null;
@@ -77,12 +77,12 @@ export default function GraphGenerator() {
   };
 
   const downloadChart = async () => {
-    const chartContainer = document.querySelector('.chart-container');
+    const chartContainer = document.querySelector(".chart-container");
     if (chartContainer) {
       const canvas = await html2canvas(chartContainer);
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
-      link.download = 'chart.png';
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "chart.png";
       link.click();
     }
   };
@@ -113,31 +113,31 @@ export default function GraphGenerator() {
                 </label>
                 <div className="flex gap-4">
                   <button
-                    onClick={() => setChartType('line')}
+                    onClick={() => setChartType("line")}
                     className={`px-4 py-2 rounded ${
-                      chartType === 'line'
-                        ? 'bg-purple-500 text-white'
-                        : 'bg-gray-700 text-gray-300'
+                      chartType === "line"
+                        ? "bg-purple-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Line
                   </button>
                   <button
-                    onClick={() => setChartType('bar')}
+                    onClick={() => setChartType("bar")}
                     className={`px-4 py-2 rounded ${
-                      chartType === 'bar'
-                        ? 'bg-purple-500 text-white'
-                        : 'bg-gray-700 text-gray-300'
+                      chartType === "bar"
+                        ? "bg-purple-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Bar
                   </button>
                   <button
-                    onClick={() => setChartType('pie')}
+                    onClick={() => setChartType("pie")}
                     className={`px-4 py-2 rounded ${
-                      chartType === 'pie'
-                        ? 'bg-purple-500 text-white'
-                        : 'bg-gray-700 text-gray-300'
+                      chartType === "pie"
+                        ? "bg-purple-500 text-white"
+                        : "bg-gray-700 text-gray-300"
                     }`}
                   >
                     Pie

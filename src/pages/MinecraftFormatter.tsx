@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { ColorPreview } from '../components/ColorPreview';
-import { ColorReference } from '../components/ColorReference';
-import { CopyButton } from '../components/CopyButton';
-import { ColorInput } from '../components/ColorInput';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { ColorPreview } from "../components/ColorPreview";
+import { ColorReference } from "../components/ColorReference";
+import { CopyButton } from "../components/CopyButton";
+import { ColorInput } from "../components/ColorInput";
 
 export default function MinecraftFormatter() {
-  const [text, setText] = useState('');
- 
+  const [text, setText] = useState("");
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
