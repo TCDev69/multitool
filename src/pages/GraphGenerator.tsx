@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download } from "lucide-react";
+import { ArrowLeft, Download, Moon, Sun } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { Card } from "../components/Card";
 import {
@@ -37,14 +37,15 @@ export default function GraphGenerator() {
   const [labels, setLabels] = useState<string>("Jan,Feb,Mar,Apr,May,Jun");
   const [data, setData] = useState<string>("65,59,80,81,56,55");
   const [title, setTitle] = useState<string>("Sample Chart");
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const chartData = {
     labels: labels.split(","),
     datasets: [
       {
-        label: "Dataset",
+        label: "Data",
         data: data.split(",").map(Number),
-        borderColor: "rgb(75, 192, 192)",
+        borderColor: "rgba(75, 192, 192, 1)",
         backgroundColor: "rgba(75, 192, 192, 0.5)",
       },
     ],
@@ -60,6 +61,9 @@ export default function GraphGenerator() {
         display: true,
         text: title,
       },
+    },
+    layout: {
+      backgroundColor: "rgba(255, 255, 255, 1)",
     },
   };
 
@@ -101,7 +105,7 @@ export default function GraphGenerator() {
         <PageHeader
           title="Graph Generator"
           description="Create beautiful charts and graphs"
-          gradient="from-blue-400 to-purple-500"
+          gradient={"from-blue-400 to-purple-500"}
         />
 
         <Card>
@@ -144,17 +148,25 @@ export default function GraphGenerator() {
                   </button>
                 </div>
               </div>
-              <button
-                onClick={downloadChart}
-                className="flex items-center px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download Chart
-              </button>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={downloadChart}
+                  className="flex items-center px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Chart
+                </button>
+                <button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="flex items-center p-3 bg-gray-700 text-white rounded hover:bg-gray-900 transition"
+                >
+                  {isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+                </button>
+              </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Chart Title
               </label>
               <input
@@ -167,7 +179,7 @@ export default function GraphGenerator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Labels (comma-separated)
               </label>
               <input
@@ -180,7 +192,7 @@ export default function GraphGenerator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Data Values (comma-separated)
               </label>
               <input
@@ -192,7 +204,11 @@ export default function GraphGenerator() {
               />
             </div>
 
-            <div className="chart-container bg-white p-4 rounded-lg">
+            <div
+              className={`chart-container p-4 rounded-lg ${
+                isDarkMode ? "bg-gray-800" : "bg-white"
+              }`}
+            >
               {renderChart()}
             </div>
           </div>
