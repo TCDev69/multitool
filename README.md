@@ -1,1 +1,23 @@
 # Multi Tool
+
+- Base64 Converter
+- Countdown
+- CSV to Json
+- Graph Generator
+- Hash Generator (SHA-256, SHA-384, SHA-512, SHA-1, SHA-224, MD5, RIPEMD-160, BLAKE2b, BLAKE2s)
+- IP Geolocator
+- Json Formatter
+- Lorem Ipsum Generator
+- Markdown Editor
+- Minecraft Formatter
+- Morse Code Converter
+- Number Converter (Decimal, Binary, Octal, Hex)
+- Password & Strength Generator
+- QR Code Generator
+- Stopwatch
+- Text Tools (sᴍᴀʟʟ ᴄᴀᴘs, Reverse, UPPERCASE, lowercase)
+- Timer
+- Unit Converter (Length, Weight, Temperature, Volume)
+- URL Encoder
+- UUID Generator
+- YAML Validator
