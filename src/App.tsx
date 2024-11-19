@@ -1,25 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import {
-  Palette,
-  Terminal,
-  Hash,
-  Braces,
-  Code2,
-  Wand2,
-  FileJson,
-  FileText,
-  FileDigit,
-  Ruler,
-  ScanLine,
-  Clock,
-  LineChart,
-  Globe,
-  AlarmClock,
-  FileType,
-  Timer,
-  Radio,
-  Table,
-  Key,
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github
 } from "lucide-react";
 import { motion } from "framer-motion";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
@@ -42,7 +23,6 @@ import MorseCode from "./pages/MorseCode";
 import UuidGenerator from "./pages/UuidGenerator";
 import CsvJsonConverter from "./pages/CSVtoJson";
 import Stopwatch from "./pages/Stopwatch";
-import Countdown from "./pages/CountDown";
 import CountdownPage from "./pages/CountDown";
 
 const tools = [
@@ -225,6 +205,15 @@ function HomePage() {
             </Link>
           ))}
         </div>
+
+        <a 
+        href="https://github.com/TCDev69/multitool" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 bg-gray-900 p-3 rounded shadow-lg hover:bg-gray-800 transition-colors"
+      >
+        <Github className="w-6 h-6 text-white" />
+      </a>
       </div>
     </div>
   );
