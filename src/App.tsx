@@ -1,5 +1,5 @@
 import { Route, Routes, Link } from 'react-router-dom';
-import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, Smile, FileType, Timer, Radio, Table, Key } from 'lucide-react';
+import { Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MinecraftFormatter from './pages/MinecraftFormatter';
 import Base64Converter from './pages/Base64Converter';
@@ -133,7 +133,7 @@ const tools = [
   {
     name: 'Countdown Timer',
     description: 'Set a target date and view the countdown',
-    icon: Clock,  
+    icon: AlarmClock,  
     path: '/countdown',
     gradient: 'from-yellow-400 to-red-500',
   },
