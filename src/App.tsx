@@ -1,6 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart
 } from "lucide-react";
 import { motion } from "framer-motion";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
@@ -26,6 +26,7 @@ import Stopwatch from "./pages/Stopwatch";
 import CountdownPage from "./pages/CountDown";
 import GitignoreGenerator from "./pages/GitIgnoreGenerator";
 import BarCodeGenerator from "./pages/BarcodeGenerator";
+import BMICalculator from "./pages/BMICalculator";
 
 const tools = [
   {
@@ -188,7 +189,14 @@ const tools = [
     icon: Barcode,
     path: '/barcode',
     gradient: 'from-green-400 to-teal-500',
-  },  
+  },
+  {
+    name: 'BMI Calculator',
+    description: 'Calculate your BMI and find out your health category',
+    icon: Heart,
+    path: '/bmi',
+    gradient: 'from-blue-400 to-green-500',
+  },    
 ];
 
 function HomePage() {
@@ -262,6 +270,7 @@ export default function App() {
       <Route path="/countdown" element={<CountdownPage />} />
       <Route path="/git" element={<GitignoreGenerator />} />
       <Route path="/barcode" element={<BarCodeGenerator />} />
+      <Route path="/bmi" element={<BMICalculator />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
