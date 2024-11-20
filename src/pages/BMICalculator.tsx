@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { PageHeader } from '../components/PageHeader';
-import { Card } from '../components/Card';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { Card } from "../components/Card";
 
 export default function BMICalculator() {
-  const [height, setHeight] = useState<number | string>('');
-  const [weight, setWeight] = useState<number | string>('');
+  const [height, setHeight] = useState<number | string>("");
+  const [weight, setWeight] = useState<number | string>("");
   const [bmi, setBmi] = useState<number | null>(null);
-  const [category, setCategory] = useState<string>('');
+  const [category, setCategory] = useState<string>("");
 
   const calculateBMI = () => {
     if (height && weight && !isNaN(Number(height)) && !isNaN(Number(weight))) {
@@ -21,22 +21,22 @@ export default function BMICalculator() {
 
   const determineCategory = (bmiValue: number) => {
     if (bmiValue < 18.5) {
-      setCategory('Underweight');
+      setCategory("Underweight");
     } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
-      setCategory('Normal weight');
+      setCategory("Normal weight");
     } else if (bmiValue >= 25 && bmiValue < 29.9) {
-      setCategory('Overweight');
+      setCategory("Overweight");
     } else {
-      setCategory('Obesity');
+      setCategory("Obesity");
     }
   };
 
   const getProgressBarColor = () => {
-    if (bmi === null) return 'bg-gray-300';
-    if (bmi < 18.5) return 'bg-blue-500';
-    if (bmi >= 18.5 && bmi < 24.9) return 'bg-green-500';
-    if (bmi >= 25 && bmi < 29.9) return 'bg-yellow-500';
-    return 'bg-red-500'; 
+    if (bmi === null) return "bg-gray-300";
+    if (bmi < 18.5) return "bg-blue-500";
+    if (bmi >= 18.5 && bmi < 24.9) return "bg-green-500";
+    if (bmi >= 25 && bmi < 29.9) return "bg-yellow-500";
+    return "bg-red-500";
   };
 
   return (
@@ -110,7 +110,7 @@ export default function BMICalculator() {
                     <div className="w-full bg-gray-300 rounded-full">
                       <div
                         className={`h-2 rounded-full ${getProgressBarColor()}`}
-                        style={{ width: `${(bmi > 40 ? 40 : bmi) * 2.5}%` }} 
+                        style={{ width: `${(bmi > 40 ? 40 : bmi) * 2.5}%` }}
                       ></div>
                     </div>
                   </div>
@@ -120,7 +120,9 @@ export default function BMICalculator() {
 
             {bmi !== null && (
               <div>
-                <p className="text-xl font-semibold text-white">Your BMI: {bmi.toFixed(2)}</p>
+                <p className="text-xl font-semibold text-white">
+                  Your BMI: {bmi.toFixed(2)}
+                </p>
                 <p className="text-lg text-gray-300">Category: {category}</p>
               </div>
             )}
