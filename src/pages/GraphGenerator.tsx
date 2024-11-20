@@ -110,12 +110,12 @@ export default function GraphGenerator() {
 
         <Card>
           <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Chart Type
-                </label>
-                <div className="flex gap-4">
+            <div className="w-full">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Chart Type
+              </label>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-2">
                   <button
                     onClick={() => setChartType("line")}
                     className={`px-4 py-2 rounded ${
@@ -147,24 +147,29 @@ export default function GraphGenerator() {
                     Pie
                   </button>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={downloadChart}
-                  className="flex items-center px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Chart
-                </button>
-                <button
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  className="flex items-center p-3 bg-gray-700 text-white rounded hover:bg-gray-900 transition"
-                >
-                  {isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-                </button>
+
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={downloadChart}
+                    className="flex items-center px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Chart
+                  </button>
+
+                  <button
+                    onClick={() => setIsDarkMode(!isDarkMode)}
+                    className="flex items-center p-3 bg-gray-700 text-white rounded hover:bg-gray-900 transition"
+                  >
+                    {isDarkMode ? (
+                      <Sun className="h-4 w-4" />
+                    ) : (
+                      <Moon className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
-
             <div>
               <label className="block text-sm font-medium mb-2">
                 Chart Title
