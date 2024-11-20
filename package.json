@@ -17,6 +17,7 @@
     "framer-motion": "^11.0.8",
     "html2canvas": "^1.4.1",
     "js-yaml": "^4.1.0",
+    "jsbarcode": "^3.11.6",
     "lucide-react": "^0.344.0",
     "papaparse": "^5.4.1",
     "prettier": "^3.3.3",

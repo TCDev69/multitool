@@ -1,6 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode
 } from "lucide-react";
 import { motion } from "framer-motion";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
@@ -25,6 +25,7 @@ import CsvJsonConverter from "./pages/CSVtoJson";
 import Stopwatch from "./pages/Stopwatch";
 import CountdownPage from "./pages/CountDown";
 import GitignoreGenerator from "./pages/GitIgnoreGenerator";
+import BarCodeGenerator from "./pages/BarcodeGenerator";
 
 const tools = [
   {
@@ -181,6 +182,13 @@ const tools = [
     path: "/git",
     gradient: "from-pink-400 to-blue-500",
   },
+  {
+    name: 'Bar Code Generator',
+    description: 'Generate barcodes easily from your text',
+    icon: Barcode,
+    path: '/barcode',
+    gradient: 'from-green-400 to-teal-500',
+  },  
 ];
 
 function HomePage() {
@@ -253,6 +261,7 @@ export default function App() {
       <Route path="/stopwatch" element={<Stopwatch />} />
       <Route path="/countdown" element={<CountdownPage />} />
       <Route path="/git" element={<GitignoreGenerator />} />
+      <Route path="/barcode" element={<BarCodeGenerator />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
