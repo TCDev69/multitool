@@ -22,3 +22,5 @@
 - UUID Generator
 - YAML Validator
 - Barcode Generator
+- BMI Calculator
+- Braille Converter

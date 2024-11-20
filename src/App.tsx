@@ -1,6 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility
 } from "lucide-react";
 import { motion } from "framer-motion";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
@@ -27,6 +27,7 @@ import CountdownPage from "./pages/CountDown";
 import GitignoreGenerator from "./pages/GitIgnoreGenerator";
 import BarCodeGenerator from "./pages/BarcodeGenerator";
 import BMICalculator from "./pages/BMICalculator";
+import BrailleConverter from "./pages/BrailleConverter";
 
 const tools = [
   {
@@ -184,19 +185,26 @@ const tools = [
     gradient: "from-pink-400 to-blue-500",
   },
   {
-    name: 'Barcode Generator',
-    description: 'Generate barcodes easily from your text',
+    name: "Barcode Generator",
+    description: "Generate barcodes easily from your text",
     icon: Barcode,
-    path: '/barcode',
-    gradient: 'from-green-400 to-teal-500',
+    path: "/barcode",
+    gradient: "from-green-400 to-teal-500",
   },
   {
-    name: 'BMI Calculator',
-    description: 'Calculate your BMI and find out your health category',
+    name: "BMI Calculator",
+    description: "Calculate your BMI and find out your health category",
     icon: Heart,
-    path: '/bmi',
-    gradient: 'from-blue-400 to-green-500',
-  },    
+    path: "/bmi",
+    gradient: "from-blue-400 to-green-500",
+  },
+  {
+    name: "Braille Converter",
+    description: "Convert text to Braille",
+    icon: Accessibility,
+    path: "/braille",
+    gradient: "from-purple-400 to-pink-500",
+  },
 ];
 
 function HomePage() {
@@ -230,14 +238,14 @@ function HomePage() {
           ))}
         </div>
 
-        <a 
-        href="https://github.com/TCDev69/multitool" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 bg-gray-900 p-3 rounded shadow-lg hover:bg-gray-800 transition-colors"
-      >
-        <Github className="w-6 h-6 text-white" />
-      </a>
+        <a
+          href="https://github.com/TCDev69/multitool"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-4 right-4 bg-gray-900 p-3 rounded shadow-lg hover:bg-gray-800 transition-colors"
+        >
+          <Github className="w-6 h-6 text-white" />
+        </a>
       </div>
     </div>
   );
@@ -271,6 +279,7 @@ export default function App() {
       <Route path="/git" element={<GitignoreGenerator />} />
       <Route path="/barcode" element={<BarCodeGenerator />} />
       <Route path="/bmi" element={<BMICalculator />} />
+      <Route path="/braille" element={<BrailleConverter />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
