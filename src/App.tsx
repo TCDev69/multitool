@@ -183,7 +183,7 @@ const tools = [
     gradient: "from-pink-400 to-blue-500",
   },
   {
-    name: 'Bar Code Generator',
+    name: 'Barcode Generator',
     description: 'Generate barcodes easily from your text',
     icon: Barcode,
     path: '/barcode',

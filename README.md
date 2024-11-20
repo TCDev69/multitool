@@ -1,6 +1,6 @@
 # Multi Tool
 
-- Base64 Converter
+- Base64 Converter (Text & File)
 - Countdown
 - CSV to Json
 - Graph Generator
@@ -21,3 +21,4 @@
 - URL Encoder
 - UUID Generator
 - YAML Validator
+- Barcode Generator
