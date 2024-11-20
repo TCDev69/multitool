@@ -24,3 +24,4 @@
 - Barcode Generator
 - BMI Calculator
 - Braille Converter
+- Minifier (HTML/CSS/JS)

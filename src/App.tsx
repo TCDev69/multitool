@@ -1,6 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown
 } from "lucide-react";
 import { motion } from "framer-motion";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
@@ -28,6 +28,7 @@ import GitignoreGenerator from "./pages/GitIgnoreGenerator";
 import BarCodeGenerator from "./pages/BarcodeGenerator";
 import BMICalculator from "./pages/BMICalculator";
 import BrailleConverter from "./pages/BrailleConverter";
+import Minifier from "./pages/MinifierConverter";
 
 const tools = [
   {
@@ -205,6 +206,13 @@ const tools = [
     path: "/braille",
     gradient: "from-purple-400 to-pink-500",
   },
+  {
+    name: 'Minifier',
+    description: 'Minify HTML, CSS, JavaScript, JSON, or XML',
+    icon: AArrowDown,
+    path: '/minifier',
+    gradient: 'from-teal-400 to-green-500',
+  },  
 ];
 
 function HomePage() {
@@ -280,6 +288,7 @@ export default function App() {
       <Route path="/barcode" element={<BarCodeGenerator />} />
       <Route path="/bmi" element={<BMICalculator />} />
       <Route path="/braille" element={<BrailleConverter />} />
+      <Route path="/minifier" element={<Minifier />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
