@@ -24,6 +24,7 @@ import UuidGenerator from "./pages/UuidGenerator";
 import CsvJsonConverter from "./pages/CSVtoJson";
 import Stopwatch from "./pages/Stopwatch";
 import CountdownPage from "./pages/CountDown";
+import GitignoreGenerator from "./pages/GitIgnoreGenerator";
 
 const tools = [
   {
@@ -173,6 +174,13 @@ const tools = [
     path: "/uuid",
     gradient: "from-blue-400 to-cyan-500",
   },
+  {
+    name: ".gitignore Generator",
+    description: "Generate random UUIDs",
+    icon: Github,
+    path: "/git",
+    gradient: "from-pink-400 to-blue-500",
+  },
 ];
 
 function HomePage() {
@@ -244,6 +252,7 @@ export default function App() {
       <Route path="/csv" element={<CsvJsonConverter />} />
       <Route path="/stopwatch" element={<Stopwatch />} />
       <Route path="/countdown" element={<CountdownPage />} />
+      <Route path="/git" element={<GitignoreGenerator />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
