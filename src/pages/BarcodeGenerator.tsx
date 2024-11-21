@@ -102,7 +102,7 @@ export default function BarCodeGenerator() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center justify-center space-x-4">
               <button
                 onClick={downloadBarcode}
                 className="bg-gradient-to-r from-green-400 to-teal-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition flex items-center"
