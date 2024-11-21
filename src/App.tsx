@@ -12,10 +12,10 @@ import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
 import Base64Converter from "./pages/Base64Converter";
 import HashGenerator from "./pages/HashGenerator";
-import JsonFormatter from "./pages/JsonFormatter";
+import Formatter from "./pages/Formatter";
 import UrlEncoder from "./pages/UrlEncoder";
 import TextTools from "./pages/TextTools";
-import YamlValidator from "./pages/YamlValidator";
+import Validator from "./pages/Validator";
 import NumberConverter from "./pages/NumberCoverter";
 import UnitConverter from "./pages/UnitConverter";
 import MarkdownEditor from "./pages/Markdown";
@@ -63,10 +63,10 @@ const tools = [
     tags: ["hash", "security", "encryption", "generator"],
   },
   {
-    name: "JSON Formatter",
+    name: "Code Formatter",
     description: "Format and validate JSON data",
     icon: Braces,
-    path: "/json",
+    path: "/formatter",
     gradient: "from-blue-400 to-indigo-500",
     tags: ["json", "formatter", "validator", "data"],
   },
@@ -87,10 +87,10 @@ const tools = [
     tags: ["text", "tools", "manipulation", "editor"],
   },
   {
-    name: "YAML Validator",
+    name: "Code Validator",
     description: "Convert between YAML and JSON formats",
     icon: FileJson,
-    path: "/yaml",
+    path: "/validator",
     gradient: "from-emerald-400 to-green-500",
     tags: ["yaml", "json", "validator", "converter"],
   },
@@ -329,10 +329,10 @@ export default function App() {
         <Route path="/minecraft-formatter" element={<MinecraftFormatter />} />
         <Route path="/base64" element={<Base64Converter />} />
         <Route path="/hash" element={<HashGenerator />} />
-        <Route path="/json" element={<JsonFormatter />} />
+        <Route path="/formatter" element={<Formatter />} />
         <Route path="/url" element={<UrlEncoder />} />
         <Route path="/text" element={<TextTools />} />
-        <Route path="/yaml" element={<YamlValidator />} />
+        <Route path="/validator" element={<Validator />} />
         <Route path="/number" element={<NumberConverter />} />
         <Route path="/unit" element={<UnitConverter />} />
         <Route path="/markdown" element={<MarkdownEditor />} />
