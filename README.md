@@ -22,7 +22,7 @@
 - UUID Generator
 - Validator (YAML, Json)
 - Barcode Generator
-- BMI Calculator
+- Health (BMI & Calorie Calculator)
 - Braille Converter
 - Minifier (HTML, CSS, JavaScript, Json, XML)
 - Beautifier (HTML, CSS, JavaScript, Json, XML)

@@ -32,7 +32,7 @@ import Stopwatch from "./pages/Stopwatch";
 import CountdownPage from "./pages/CountDown";
 import GitignoreGenerator from "./pages/GitIgnoreGenerator";
 import BarCodeGenerator from "./pages/BarcodeGenerator";
-import BMICalculator from "./pages/BMICalculator";
+import BMICalculator from "./pages/HealthCalculator";
 import BrailleConverter from "./pages/BrailleConverter";
 import Minifier from "./pages/MinifierConverter";
 import Beautifier from "./pages/BeautifyConverter";
@@ -40,7 +40,7 @@ import FibonacciCalculator from "./pages/FibonacciCalculator";
 import TextStatistics from "./pages/TextStatistics";
 import ColorTools from "./pages/ColorTools";
 import CalorieCalculator from "./pages/CalorieCalculator";
-import HealthCalculator from "./pages/BMICalculator";
+import HealthCalculator from "./pages/HealthCalculator";
 
 const tools = [
   {
