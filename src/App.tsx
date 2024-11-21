@@ -39,6 +39,7 @@ import FibonacciCalculator from "./pages/FibonacciCalculator";
 import TextStatistics from "./pages/TextStatistics";
 import ColorTools from "./pages/ColorTools";
 import HealthCalculator from "./pages/HealthCalculator";
+import DNSChecker from "./pages/DnsChecker";
 
 const tools = [
   {
@@ -279,7 +280,15 @@ const tools = [
     path: '/color',
     gradient: 'from-teal-400 to-cyan-500',
     tags: ["color", "converter", "picker", "tool"]
-  }, 
+  },
+  {
+    name: 'DNS Checker',
+    description: 'Check DNS records for a domain name',
+    icon: Globe,
+    path: '/dns',
+    gradient: 'from-blue-400 to-indigo-500',
+    tags: ['dns', 'domain', 'checker', 'records', 'network'],
+  },   
 ];
 
 function HomePage() {
@@ -382,6 +391,7 @@ export default function App() {
         <Route path="/fibonacci" element={<FibonacciCalculator />} />
         <Route path="/textstats" element={<TextStatistics />} /> 
         <Route path="/color" element={<ColorTools />} /> 
+        <Route path="/dns" element={<DNSChecker />} /> 
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>
