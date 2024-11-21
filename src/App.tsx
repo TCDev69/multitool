@@ -1,6 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, Code
 } from "lucide-react";
 import { motion } from "framer-motion";
 import MinecraftFormatter from "./pages/MinecraftFormatter";
@@ -29,6 +29,7 @@ import BarCodeGenerator from "./pages/BarcodeGenerator";
 import BMICalculator from "./pages/BMICalculator";
 import BrailleConverter from "./pages/BrailleConverter";
 import Minifier from "./pages/MinifierConverter";
+import Beautifier from "./pages/BeautifyConverter";
 
 const tools = [
   {
@@ -212,7 +213,14 @@ const tools = [
     icon: AArrowDown,
     path: '/minifier',
     gradient: 'from-teal-400 to-green-500',
-  },  
+  },
+  {
+    name: 'Beautifier',
+    description: 'Convert minified HTML, CSS, JavaScript, JSON ir XML into readable format',
+    icon: Code,
+    path: '/beautifier',
+    gradient: 'from-green-400 to-blue-500',
+  },    
 ];
 
 function HomePage() {
@@ -289,6 +297,7 @@ export default function App() {
       <Route path="/bmi" element={<BMICalculator />} />
       <Route path="/braille" element={<BrailleConverter />} />
       <Route path="/minifier" element={<Minifier />} />
+      <Route path="/beautifier" element={<Beautifier />} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );
