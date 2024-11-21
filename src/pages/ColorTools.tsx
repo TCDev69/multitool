@@ -72,7 +72,7 @@ export default function ColorTools() {
                 <label className="block text-sm font-medium text-gray-300 mb-2">
                   CMYK
                 </label>
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-4 gap-4">
                   {["c", "m", "y", "k"].map((color, idx) => (
                     <input
                       key={idx}
