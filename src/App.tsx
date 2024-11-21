@@ -13,7 +13,7 @@ import MinecraftFormatter from "./pages/MinecraftFormatter";
 import Base64Converter from "./pages/Base64Converter";
 import HashGenerator from "./pages/HashGenerator";
 import Formatter from "./pages/Formatter";
-import UrlEncoder from "./pages/UrlEncoder";
+import Url from "./pages/UrlEncDec";
 import TextTools from "./pages/TextTools";
 import Validator from "./pages/Validator";
 import NumberConverter from "./pages/NumberCoverter";
@@ -32,14 +32,12 @@ import Stopwatch from "./pages/Stopwatch";
 import CountdownPage from "./pages/CountDown";
 import GitignoreGenerator from "./pages/GitIgnoreGenerator";
 import BarCodeGenerator from "./pages/BarcodeGenerator";
-import BMICalculator from "./pages/HealthCalculator";
 import BrailleConverter from "./pages/BrailleConverter";
 import Minifier from "./pages/MinifierConverter";
 import Beautifier from "./pages/BeautifyConverter";
 import FibonacciCalculator from "./pages/FibonacciCalculator";
 import TextStatistics from "./pages/TextStatistics";
 import ColorTools from "./pages/ColorTools";
-import CalorieCalculator from "./pages/CalorieCalculator";
 import HealthCalculator from "./pages/HealthCalculator";
 
 const tools = [
@@ -358,7 +356,7 @@ export default function App() {
         <Route path="/base64" element={<Base64Converter />} />
         <Route path="/hash" element={<HashGenerator />} />
         <Route path="/formatter" element={<Formatter />} />
-        <Route path="/url" element={<UrlEncoder />} />
+        <Route path="/url" element={<Url />} />
         <Route path="/text" element={<TextTools />} />
         <Route path="/validator" element={<Validator />} />
         <Route path="/number" element={<NumberConverter />} />

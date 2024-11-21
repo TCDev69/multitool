@@ -18,7 +18,7 @@
 - Text Tools (sᴍᴀʟʟ ᴄᴀᴘs, Reverse, UPPERCASE, lowercase)
 - Timer
 - Unit Converter (Length, Weight, Temperature, Volume)
-- URL Encoder
+- URL (Encoder, Decoder)
 - UUID Generator
 - Validator (YAML, Json)
 - Barcode Generator
