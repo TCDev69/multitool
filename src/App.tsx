@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, Droplet, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
+  Palette, Terminal, Activity, Hash, Braces, Code2, Wand2, FileJson, Droplet, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -39,6 +39,8 @@ import Beautifier from "./pages/BeautifyConverter";
 import FibonacciCalculator from "./pages/FibonacciCalculator";
 import TextStatistics from "./pages/TextStatistics";
 import ColorTools from "./pages/ColorTools";
+import CalorieCalculator from "./pages/CalorieCalculator";
+import HealthCalculator from "./pages/BMICalculator";
 
 const tools = [
   {
@@ -224,15 +226,14 @@ const tools = [
     path: "/barcode",
     gradient: "from-green-400 to-teal-500",
     tags: ["barcode", "generator", "text", "tools"],
-  },
-  {
-    name: "BMI Calculator",
-    description: "Calculate your BMI and find out your health category",
+  },{
+    name: 'Health',
+    description: 'BMI and Calorie calculators to track health and fitness',
     icon: Heart,
-    path: "/bmi",
-    gradient: "from-blue-400 to-green-500",
-    tags: ["bmi", "calculator", "health", "tools"],
-  },
+    path: '/health',
+    gradient: 'from-green-400 to-teal-500',
+    tags: ['health', 'fitness', 'bmi', 'calories', 'calculator'],
+  },  
   {
     name: "Braille Converter",
     description: "Convert text to Braille",
@@ -280,8 +281,7 @@ const tools = [
     path: '/color',
     gradient: 'from-teal-400 to-cyan-500',
     tags: ["color", "converter", "picker", "tool"]
-  }
-  
+  }, 
 ];
 
 function HomePage() {
@@ -377,7 +377,7 @@ export default function App() {
         <Route path="/countdown" element={<CountdownPage />} />
         <Route path="/git" element={<GitignoreGenerator />} />
         <Route path="/barcode" element={<BarCodeGenerator />} />
-        <Route path="/bmi" element={<BMICalculator />} />
+        <Route path="/health" element={<HealthCalculator />} />
         <Route path="/braille" element={<BrailleConverter />} />
         <Route path="/minifier" element={<Minifier />} />
         <Route path="/beautifier" element={<Beautifier />} />

@@ -2,14 +2,42 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
+import { Tabs } from "../components/Tabs";
 import { Card } from "../components/Card";
 
-export default function BMICalculator() {
+export default function HealthCalculator() {
   const [height, setHeight] = useState<number | string>("");
   const [weight, setWeight] = useState<number | string>("");
   const [bmi, setBmi] = useState<number | null>(null);
   const [category, setCategory] = useState<string>("");
+  const [gender, setGender] = useState('male');
+  const [age, setAge] = useState(25);
+  const [activityLevel, setActivityLevel] = useState('moderate');
+  const [tdee, setTdee] = useState<number | null>(null);
 
+  const calculateTDEE = () => {
+    let bmr: number;
+
+    if (gender === 'male') {
+      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+    } else {
+      bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+    }
+
+    const activityMultiplier =
+      activityLevel === 'sedentary'
+        ? 1.2
+        : activityLevel === 'light'
+        ? 1.375
+        : activityLevel === 'moderate'
+        ? 1.55
+        : activityLevel === 'active'
+        ? 1.725
+        : 1.9;
+
+    const tdeeResult = bmr * activityMultiplier;
+    setTdee(tdeeResult);
+  };
   const calculateBMI = () => {
     if (height && weight && !isNaN(Number(height)) && !isNaN(Number(weight))) {
       const heightInMeters = Number(height) / 100;
@@ -55,8 +83,10 @@ export default function BMICalculator() {
           description="Calculate your BMI and find out your health category"
           gradient="from-blue-400 to-green-500"
         />
-
-        <Card>
+<Tabs
+          tabs={['BMI', 'Calories']}
+        >
+          <Card>
           <div className="space-y-4 text-center">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -128,6 +158,87 @@ export default function BMICalculator() {
             )}
           </div>
         </Card>
+        <Card>
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Gender</label>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            className="w-full bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Age</label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(Number(e.target.value))}
+            className="w-full bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Weight (kg)</label>
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => setWeight(Number(e.target.value))}
+            className="w-full bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Height (cm)</label>
+          <input
+            type="number"
+            value={height}
+            onChange={(e) => setHeight(Number(e.target.value))}
+            className="w-full bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">Activity Level</label>
+          <select
+            value={activityLevel}
+            onChange={(e) => setActivityLevel(e.target.value)}
+            className="w-full bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          >
+            <option value="sedentary">Sedentary (little or no exercise)</option>
+            <option value="light">Lightly active (light exercise/sports 1-3 days/week)</option>
+            <option value="moderate">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+            <option value="active">Very active (hard exercise/sports 6-7 days a week)</option>
+            <option value="veryActive">Super active (very hard exercise & physical job)</option>
+          </select>
+        </div>
+
+        <div className="mt-4">
+          <button
+            onClick={calculateTDEE}
+            className="w-full bg-teal-500 text-white py-2 rounded focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          >
+            Calculate TDEE
+          </button>
+        </div>
+
+        {tdee !== null && (
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-300 mb-2">Your TDEE</label>
+            <input
+              type="text"
+              value={`TDEE: ${tdee.toFixed(2)} kcal/day`}
+              readOnly
+              className="w-full bg-gray-900 rounded p-3 text-white font-mono cursor-pointer focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+          </div>
+        )}
+      </Card>
+        </Tabs>
+        
       </div>
     </div>
   );
