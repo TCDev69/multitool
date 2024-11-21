@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, Droplet, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -38,6 +38,7 @@ import Minifier from "./pages/MinifierConverter";
 import Beautifier from "./pages/BeautifyConverter";
 import FibonacciCalculator from "./pages/FibonacciCalculator";
 import TextStatistics from "./pages/TextStatistics";
+import ColorTools from "./pages/ColorTools";
 
 const tools = [
   {
@@ -271,7 +272,16 @@ const tools = [
     path: '/textstats',
     gradient: 'from-indigo-400 to-blue-500',
     tags: ["text", "statistics", "count", "words"],
-  },    
+  },
+  {
+    name: 'Color Tools',
+    description: 'Convert and pick colors easily',
+    icon: Droplet,
+    path: '/color',
+    gradient: 'from-teal-400 to-cyan-500',
+    tags: ["color", "converter", "picker", "tool"]
+  }
+  
 ];
 
 function HomePage() {
@@ -373,6 +383,7 @@ export default function App() {
         <Route path="/beautifier" element={<Beautifier />} />
         <Route path="/fibonacci" element={<FibonacciCalculator />} />
         <Route path="/textstats" element={<TextStatistics />} /> 
+        <Route path="/color" element={<ColorTools />} /> 
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>

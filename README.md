@@ -28,3 +28,4 @@
 - Beautifier (HTML, CSS, JavaScript, Json, XML)
 - Fibonacci Calculator
 - Text Statistics (Letters, Words, Paragraphs, Sentences)
+- Color Tools (CMYK to RGB, Color Picker, Hex to RGB)
