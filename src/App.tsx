@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, Code
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -249,7 +249,7 @@ const tools = [
   {
     name: 'Beautifier',
     description: 'Convert minified HTML, CSS, JavaScript, JSON or XML into readable format',
-    icon: Code,
+    icon: AArrowUp,
     path: '/beautifier',
     gradient: 'from-green-400 to-blue-500',
     tags: ["beautifier", "html", "css", "javascript", "json", "xml"],
