@@ -4,6 +4,9 @@ import { ArrowLeft } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { Card } from "../components/Card";
 import { js as beautifyJs } from "js-beautify";
+import { Tab } from "@headlessui/react";
+
+const tabs = ["HTML", "CSS", "JavaScript", "JSON", "XML"];
 
 const beautifyHtml = (html: string) => {
   return html
@@ -52,6 +55,7 @@ export default function Beautifier() {
   const [beautifiedXml, setBeautifiedXml] = useState("");
   const [beautifiedJson, setBeautifiedJson] = useState("");
   const [copiedText, setCopiedText] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleHtmlBeautification = () => {
     setBeautifiedHtml(beautifyHtml(inputHtml));
@@ -93,196 +97,247 @@ export default function Beautifier() {
 
         <PageHeader
           title="Beautifier"
-          description="Beautify your HTML, CSS, JavaScript, XML, or JSON code"
+          description="Beautify your HTML, CSS, JavaScript, JSON, or XML code"
           gradient="from-teal-400 to-green-500"
         />
 
         <div className="space-y-8">
-          {/* HTML Section */}
-          <Card>
-            <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Input HTML
-              </label>
-              <textarea
-                value={inputHtml}
-                onChange={(e) => setInputHtml(e.target.value)}
-                className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                placeholder="Enter your HTML code here..."
-              />
-              <button
-                onClick={handleHtmlBeautification}
-                className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
-              >
-                Beautify HTML
-              </button>
+          {/* Tabs */}
+          <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
+            <Tab.List className="flex space-x-4 mb-6">
+              {tabs.map((tab, index) => (
+                <Tab
+                  key={tab}
+                  className={({ selected }) =>
+                    `px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      selected
+                        ? "bg-gradient-to-r from-teal-400 to-green-500 text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                    }`
+                  }
+                >
+                  {tab}
+                </Tab>
+              ))}
+            </Tab.List>
 
-              <div className="flex items-center justify-between mt-4">
-                <label className="block text-sm font-medium text-gray-300 -mb-2">
-                  Output HTML
-                </label>
-                {copiedText === beautifiedHtml && (
-                  <span className="text-sm text-green-500">Copied!</span>
-                )}
-              </div>
+            <Tab.Panels className="mt-6">
+              {/* HTML Section */}
+              <Tab.Panel>
+                <Card>
+                  <div className="space-y-4">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Input HTML
+                    </label>
+                    <textarea
+                      value={inputHtml}
+                      onChange={(e) => setInputHtml(e.target.value)}
+                      className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      placeholder="Enter your HTML code here..."
+                    />
+                    <button
+                      onClick={handleHtmlBeautification}
+                      className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
+                    >
+                      Beautify HTML
+                    </button>
 
-              <pre
-                className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
-                onClick={() => handleCopy(beautifiedHtml)}
-              >
-                {beautifiedHtml || <span className="text-gray-400">Your beautified HTML will appear here...</span>}
-              </pre>
-            </div>
-          </Card>
+                    <div className="flex items-center justify-between mt-4">
+                      <label className="block text-sm font-medium text-gray-300 -mb-2">
+                        Output HTML
+                      </label>
+                      {copiedText === beautifiedHtml && (
+                        <span className="text-sm text-green-500">Copied!</span>
+                      )}
+                    </div>
 
-          {/* CSS Section */}
-          <Card>
-            <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Input CSS
-              </label>
-              <textarea
-                value={inputCss}
-                onChange={(e) => setInputCss(e.target.value)}
-                className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                placeholder="Enter your CSS code here..."
-              />
-              <button
-                onClick={handleCssBeautification}
-                className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
-              >
-                Beautify CSS
-              </button>
+                    <pre
+                      className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
+                      onClick={() => handleCopy(beautifiedHtml)}
+                    >
+                      {beautifiedHtml || (
+                        <span className="text-gray-400">
+                          Your beautified HTML will appear here...
+                        </span>
+                      )}
+                    </pre>
+                  </div>
+                </Card>
+              </Tab.Panel>
 
-              <div className="flex items-center justify-between mt-4">
-                <label className="block text-sm font-medium text-gray-300 -mb-2">
-                  Output CSS
-                </label>
-                {copiedText === beautifiedCss && (
-                  <span className="text-sm text-green-500">Copied!</span>
-                )}
-              </div>
+              {/* CSS Section */}
+              <Tab.Panel>
+                <Card>
+                  <div className="space-y-4">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Input CSS
+                    </label>
+                    <textarea
+                      value={inputCss}
+                      onChange={(e) => setInputCss(e.target.value)}
+                      className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      placeholder="Enter your CSS code here..."
+                    />
+                    <button
+                      onClick={handleCssBeautification}
+                      className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
+                    >
+                      Beautify CSS
+                    </button>
 
-              <pre
-                className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
-                onClick={() => handleCopy(beautifiedCss)}
-              >
-                {beautifiedCss || <span className="text-gray-400">Your beautified CSS will appear here...</span>}
-              </pre>
-            </div>
-          </Card>
+                    <div className="flex items-center justify-between mt-4">
+                      <label className="block text-sm font-medium text-gray-300 -mb-2">
+                        Output CSS
+                      </label>
+                      {copiedText === beautifiedCss && (
+                        <span className="text-sm text-green-500">Copied!</span>
+                      )}
+                    </div>
 
-          {/* JavaScript Section */}
-          <Card>
-            <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Input JavaScript
-              </label>
-              <textarea
-                value={inputJs}
-                onChange={(e) => setInputJs(e.target.value)}
-                className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                placeholder="Enter your JavaScript code here..."
-              />
-              <button
-                onClick={handleJsBeautification}
-                className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
-              >
-                Beautify JavaScript
-              </button>
+                    <pre
+                      className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
+                      onClick={() => handleCopy(beautifiedCss)}
+                    >
+                      {beautifiedCss || (
+                        <span className="text-gray-400">
+                          Your beautified CSS will appear here...
+                        </span>
+                      )}
+                    </pre>
+                  </div>
+                </Card>
+              </Tab.Panel>
 
-              <div className="flex items-center justify-between mt-4">
-                <label className="block text-sm font-medium text-gray-300 -mb-2">
-                  Output JavaScript
-                </label>
-                {copiedText === beautifiedJs && (
-                  <span className="text-sm text-green-500">Copied!</span>
-                )}
-              </div>
+              {/* JavaScript Section */}
+              <Tab.Panel>
+                <Card>
+                  <div className="space-y-4">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Input JavaScript
+                    </label>
+                    <textarea
+                      value={inputJs}
+                      onChange={(e) => setInputJs(e.target.value)}
+                      className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      placeholder="Enter your JavaScript code here..."
+                    />
+                    <button
+                      onClick={handleJsBeautification}
+                      className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
+                    >
+                      Beautify JavaScript
+                    </button>
 
-              <pre
-                className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
-                onClick={() => handleCopy(beautifiedJs)}
-              >
-                {beautifiedJs ||
-                  <span className="text-gray-400">Your beautified JavaScript will appear here...</span>}
-              </pre>
-            </div>
-          </Card>
+                    <div className="flex items-center justify-between mt-4">
+                      <label className="block text-sm font-medium text-gray-300 -mb-2">
+                        Output JavaScript
+                      </label>
+                      {copiedText === beautifiedJs && (
+                        <span className="text-sm text-green-500">Copied!</span>
+                      )}
+                    </div>
 
-          {/* JSON Section */}
-          <Card>
-            <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Input JSON
-              </label>
-              <textarea
-                value={inputJson}
-                onChange={(e) => setInputJson(e.target.value)}
-                className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                placeholder="Enter your JSON code here..."
-              />
-              <button
-                onClick={handleJsonBeautification}
-                className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
-              >
-                Beautify JSON
-              </button>
+                    <pre
+                      className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
+                      onClick={() => handleCopy(beautifiedJs)}
+                    >
+                      {beautifiedJs || (
+                        <span className="text-gray-400">
+                          Your beautified JavaScript will appear here...
+                        </span>
+                      )}
+                    </pre>
+                  </div>
+                </Card>
+              </Tab.Panel>
 
-              <div className="flex items-center justify-between mt-4">
-                <label className="block text-sm font-medium text-gray-300 -mb-2">
-                  Output JSON
-                </label>
-                {copiedText === beautifiedJson && (
-                  <span className="text-sm text-green-500">Copied!</span>
-                )}
-              </div>
+              {/* Json Section */}
+              <Tab.Panel>
+                <Card>
+                  <div className="space-y-4">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Input JSON
+                    </label>
+                    <textarea
+                      value={inputJson}
+                      onChange={(e) => setInputJson(e.target.value)}
+                      className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      placeholder="Enter your JSON code here..."
+                    />
+                    <button
+                      onClick={handleJsonBeautification}
+                      className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
+                    >
+                      Beautify JSON
+                    </button>
 
-              <pre
-                className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
-                onClick={() => handleCopy(beautifiedJson)}
-              >
-                {beautifiedJson || <span className="text-gray-400">Your beautified JSON will appear here...</span>}
-              </pre>
-            </div>
-          </Card>
+                    <div className="flex items-center justify-between mt-4">
+                      <label className="block text-sm font-medium text-gray-300 -mb-2">
+                        Output JSON
+                      </label>
+                      {copiedText === beautifiedJson && (
+                        <span className="text-sm text-green-500">Copied!</span>
+                      )}
+                    </div>
 
-          {/* XML Section */}
-          <Card>
-            <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Input XML
-              </label>
-              <textarea
-                value={inputXml}
-                onChange={(e) => setInputXml(e.target.value)}
-                className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                placeholder="Enter your XML code here..."
-              />
-              <button
-                onClick={handleXmlBeautification}
-                className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
-              >
-                Beautify XML
-              </button>
+                    <pre
+                      className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
+                      onClick={() => handleCopy(beautifiedJson)}
+                    >
+                      {beautifiedJson || (
+                        <span className="text-gray-400">
+                          Your beautified JSON will appear here...
+                        </span>
+                      )}
+                    </pre>
+                  </div>
+                </Card>
+              </Tab.Panel>
 
-              <div className="flex items-center justify-between mt-4">
-                <label className="block text-sm font-medium text-gray-300 -mb-2">
-                  Output XML
-                </label>
-                {copiedText === beautifiedXml && (
-                  <span className="text-sm text-green-500">Copied!</span>
-                )}
-              </div>
+              {/* XML Section */}
+              <Tab.Panel>
+                <Card>
+                  <div className="space-y-4">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Input XML
+                    </label>
+                    <textarea
+                      value={inputXml}
+                      onChange={(e) => setInputXml(e.target.value)}
+                      className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                      placeholder="Enter your XML code here..."
+                    />
+                    <button
+                      onClick={handleXmlBeautification}
+                      className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
+                    >
+                      Beautify XML
+                    </button>
 
-              <pre
-                className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
-                onClick={() => handleCopy(beautifiedXml)}
-              >
-                {beautifiedXml || <span className="text-gray-400">Your beautified XML will appear here...</span>}
-              </pre>
-            </div>
-          </Card>
+                    <div className="flex items-center justify-between mt-4">
+                      <label className="block text-sm font-medium text-gray-300 -mb-2">
+                        Output XML
+                      </label>
+                      {copiedText === beautifiedXml && (
+                        <span className="text-sm text-green-500">Copied!</span>
+                      )}
+                    </div>
+
+                    <pre
+                      className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
+                      onClick={() => handleCopy(beautifiedXml)}
+                    >
+                      {beautifiedXml || (
+                        <span className="text-gray-400">
+                          Your beautified XML will appear here...
+                        </span>
+                      )}
+                    </pre>
+                  </div>
+                </Card>
+              </Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
         </div>
       </div>
     </div>

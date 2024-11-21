@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { Card } from "../components/Card";
 import { js as beautifyJs } from "js-beautify";
+import { Tabs } from "../components/Tabs";
 
 export default function Formatter() {
   const [jsonInput, setJsonInput] = useState("");
@@ -85,120 +86,126 @@ export default function Formatter() {
         />
 
         <div className="space-y-8">
+          <Tabs tabs={["HTML", "CSS", "JavaScript", "JSON"]}>
+            {/* HTML Panel */}
+            <Card>
+              <h2 className="text-lg font-semibold mb-4">HTML Formatter</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Input HTML
+                  </label>
+                  <textarea
+                    value={htmlInput}
+                    onChange={handleHtmlChange}
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Paste your HTML here..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Formatted HTML
+                  </label>
+                  <textarea
+                    value={formattedHtml}
+                    readOnly
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono"
+                  />
+                </div>
+              </div>
+            </Card>
 
-          {/* HTML Formatter */}
-          <Card>
-            <h2 className="text-lg font-semibold mb-4">HTML Formatter</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Input HTML
-                </label>
-                <textarea
-                  value={htmlInput}
-                  onChange={handleHtmlChange}
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  placeholder="Paste your HTML here..."
-                />
+            {/* CSS Panel */}
+            <Card>
+              <h2 className="text-lg font-semibold mb-4">CSS Formatter</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Input CSS
+                  </label>
+                  <textarea
+                    value={cssInput}
+                    onChange={handleCssChange}
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Paste your CSS here..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Formatted CSS
+                  </label>
+                  <textarea
+                    value={formattedCss}
+                    readOnly
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Formatted HTML
-                </label>
-                <textarea
-                  value={formattedHtml}
-                  readOnly
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono"
-                />
-              </div>
-            </div>
-          </Card>
+            </Card>
 
-          {/* CSS Formatter */}
-          <Card>
-            <h2 className="text-lg font-semibold mb-4">CSS Formatter</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Input CSS
-                </label>
-                <textarea
-                  value={cssInput}
-                  onChange={handleCssChange}
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  placeholder="Paste your CSS here..."
-                />
+            {/* JavaScript Panel */}
+            <Card>
+              <h2 className="text-lg font-semibold mb-4">
+                JavaScript Formatter
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Input JavaScript
+                  </label>
+                  <textarea
+                    value={jsInput}
+                    onChange={handleJsChange}
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Paste your JavaScript here..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Formatted JavaScript
+                  </label>
+                  <textarea
+                    value={formattedJs}
+                    readOnly
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Formatted CSS
-                </label>
-                <textarea
-                  value={formattedCss}
-                  readOnly
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono"
-                />
-              </div>
-            </div>
-          </Card>
+            </Card>
 
-          {/* JavaScript Formatter */}
-          <Card>
-            <h2 className="text-lg font-semibold mb-4">JavaScript Formatter</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Input JavaScript
-                </label>
-                <textarea
-                  value={jsInput}
-                  onChange={handleJsChange}
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  placeholder="Paste your JavaScript here..."
-                />
+            {/* JSON Panel */}
+            <Card>
+              <h2 className="text-lg font-semibold mb-4">JSON Formatter</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Input JSON
+                  </label>
+                  <textarea
+                    value={jsonInput}
+                    onChange={handleJsonChange}
+                    className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Paste your JSON here..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Formatted JSON
+                  </label>
+                  <textarea
+                    value={formattedJson}
+                    readOnly
+                    className={`w-full h-[300px] bg-gray-900 rounded p-3 font-mono ${
+                      jsonError ? "text-red-400" : "text-white"
+                    }`}
+                  />
+                  {jsonError && (
+                    <p className="mt-2 text-red-400 text-sm">{jsonError}</p>
+                  )}
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Formatted JavaScript
-                </label>
-                <textarea
-                  value={formattedJs}
-                  readOnly
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono"
-                />
-              </div>
-            </div>
-          </Card>
-          {/* JSON Formatter */}
-          <Card>
-            <h2 className="text-lg font-semibold mb-4">JSON Formatter</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Input JSON
-                </label>
-                <textarea
-                  value={jsonInput}
-                  onChange={handleJsonChange}
-                  className="w-full h-[300px] bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  placeholder="Paste your JSON here..."
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Formatted JSON
-                </label>
-                <textarea
-                  value={formattedJson}
-                  readOnly
-                  className={`w-full h-[300px] bg-gray-900 rounded p-3 font-mono ${
-                    jsonError ? "text-red-400" : "text-white"
-                  }`}
-                />
-                {jsonError && <p className="mt-2 text-red-400 text-sm">{jsonError}</p>}
-              </div>
-            </div>
-          </Card>
+            </Card>
+          </Tabs>
         </div>
       </div>
     </div>
