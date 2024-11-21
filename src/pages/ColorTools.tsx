@@ -5,6 +5,7 @@ import { PageHeader } from "../components/PageHeader";
 import { Card } from "../components/Card";
 import Colorful from "@uiw/react-color-colorful";
 import { hsvaToHex } from "@uiw/color-convert";
+import { Tabs } from "../components/Tabs";
 
 export default function ColorTools() {
   const [cmyk, setCmyk] = useState({ c: 0, m: 0, y: 0, k: 0 });
@@ -64,6 +65,7 @@ export default function ColorTools() {
         />
 
         <div className="space-y-8">
+        <Tabs tabs={["CMYK to RGB", "Color Picker", "Hex to RGB"]}>
           <Card>
             <div className="space-y-4">
               <div>
@@ -196,6 +198,7 @@ export default function ColorTools() {
               </div>
             </div>
           </Card>
+          </Tabs>
         </div>
       </div>
     </div>
