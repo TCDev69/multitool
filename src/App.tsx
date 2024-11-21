@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Activity, Hash, Braces, Code2, Wand2, FileJson, Droplet, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
+  Palette, Terminal, Hash, Braces, Code, Code2, Wand2, FileJson, Droplet, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -40,6 +40,7 @@ import TextStatistics from "./pages/TextStatistics";
 import ColorTools from "./pages/ColorTools";
 import HealthCalculator from "./pages/HealthCalculator";
 import DNSChecker from "./pages/DnsChecker";
+import UnicodeConverter from "./pages/UnicodeConverter";
 
 const tools = [
   {
@@ -289,6 +290,14 @@ const tools = [
     gradient: 'from-blue-400 to-indigo-500',
     tags: ['dns', 'domain', 'checker', 'records', 'network'],
   },   
+  {
+    name: 'Unicode Converter',
+    description: 'Convert text to Unicode and vice versa',
+    icon: Code,
+    path: '/unicode',
+    gradient: 'from-teal-400 to-blue-500',
+    tags: ['unicode', 'converter', 'text', 'encode', 'decode'],
+  }  
 ];
 
 function HomePage() {
@@ -392,6 +401,7 @@ export default function App() {
         <Route path="/textstats" element={<TextStatistics />} /> 
         <Route path="/color" element={<ColorTools />} /> 
         <Route path="/dns" element={<DNSChecker />} /> 
+        <Route path="/unicode" element={<UnicodeConverter />} /> 
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>

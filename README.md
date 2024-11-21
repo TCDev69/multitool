@@ -30,3 +30,4 @@
 - Text Statistics (Letters, Words, Paragraphs, Sentences)
 - Color Tools (CMYK to RGB, Color Picker, Hex to RGB)
 - DNS Checker (records)
+- Unicode Converter

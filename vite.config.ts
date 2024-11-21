@@ -17,4 +17,9 @@ export default defineConfig({
     'process.env': {},
     global: 'window',
   },
+  server: {
+    mimeTypes: {
+      'application/javascript': ['.mjs', '.js'],
+    },
+  },
 });
