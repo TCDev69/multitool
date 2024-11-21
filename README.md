@@ -26,3 +26,5 @@
 - Braille Converter
 - Minifier (HTML, CSS, JavaScript, Json, XML)
 - Beautifier (HTML, CSS, JavaScript, Json, XML)
+- Fibonacci Calculator
+- Text Statistics (Letters, Words, Paragraphs, Sentences)
