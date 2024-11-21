@@ -45,15 +45,25 @@ const minifyJson = (json: string) => {
   }
 };
 
+const minifyXml = (xml: string) => {
+  return xml
+    .replace(/>\s+</g, '><') // Rimuove gli spazi bianchi tra i tag
+    .replace(/\s+/g, ' ')    // Sostituisce spazi multipli con uno singolo
+    .replace(/<!--.*?-->/g, '') // Rimuove i commenti
+    .trim();
+};
+
 export default function Minifier() {
   const [inputHtml, setInputHtml] = useState('');
   const [inputCss, setInputCss] = useState('');
   const [inputJs, setInputJs] = useState('');
   const [inputJson, setInputJson] = useState('');
+  const [inputXml, setInputXml] = useState('');
   const [minifiedHtml, setMinifiedHtml] = useState('');
   const [minifiedCss, setMinifiedCss] = useState('');
   const [minifiedJs, setMinifiedJs] = useState('');
   const [minifiedJson, setMinifiedJson] = useState('');
+  const [minifiedXml, setMinifiedXml] = useState('');
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
   const handleHtmlMinification = () => setMinifiedHtml(minifyHtml(inputHtml));
@@ -66,6 +76,10 @@ export default function Minifier() {
       setCopiedText(text);
       setTimeout(() => setCopiedText(null), 2000);
     });
+  };
+
+  const handleXmlMinification = () => {
+    setMinifiedXml(minifyXml(inputXml));
   };
 
   return (
@@ -206,6 +220,42 @@ export default function Minifier() {
                 onClick={() => handleCopy(minifiedJson)}
               >
                 {minifiedJson || <span className="text-gray-400">Your minified JSON will appear here...</span>}
+              </pre>
+            </div>
+          </Card>
+          <Card>
+            <div className="space-y-4">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Input XML</label>
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <textarea
+                    value={inputXml}
+                    onChange={(e) => setInputXml(e.target.value)}
+                    className="w-full h-32 bg-gray-900 rounded p-3 text-white font-mono focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    placeholder="Enter your XML code here..."
+                  />
+                </div>
+              </div>
+
+              <button
+                onClick={handleXmlMinification}
+                className="bg-gradient-to-r from-teal-400 to-green-500 px-4 py-2 rounded text-white font-medium hover:opacity-90 transition"
+              >
+                Minify XML
+              </button>
+
+              <div className="flex items-center justify-between mt-4">
+                <label className="block text-sm font-medium text-gray-300 mb-2">Output XML</label>
+                {copiedText === minifiedXml && (
+                  <span className="text-sm text-green-500">Copied!</span>
+                )}
+              </div>
+
+              <pre
+                className="w-full bg-gray-900 rounded p-3 text-white font-mono overflow-x-auto cursor-pointer"
+                onClick={() => handleCopy(minifiedXml)}
+              >
+                {minifiedXml || 'Your minified XML will appear here...'}
               </pre>
             </div>
           </Card>
