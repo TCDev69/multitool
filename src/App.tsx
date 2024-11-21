@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -37,6 +37,7 @@ import BrailleConverter from "./pages/BrailleConverter";
 import Minifier from "./pages/MinifierConverter";
 import Beautifier from "./pages/BeautifyConverter";
 import FibonacciCalculator from "./pages/FibonacciCalculator";
+import TextStatistics from "./pages/TextStatistics";
 
 const tools = [
   {
@@ -262,7 +263,15 @@ const tools = [
     path: '/fibonacci',
     gradient: 'from-red-400 to-yellow-500',
     tags: ["fibonacci", "calculator", "math", "sequence"],
-  }  
+  },
+  {
+    name: 'Text Statistics',
+    description: 'Count letters, words, paragraphs, and sentences in your text',
+    icon: FileText,
+    path: '/textstats',
+    gradient: 'from-indigo-400 to-blue-500',
+    tags: ["text", "statistics", "count", "words"],
+  },    
 ];
 
 function HomePage() {
@@ -363,6 +372,7 @@ export default function App() {
         <Route path="/minifier" element={<Minifier />} />
         <Route path="/beautifier" element={<Beautifier />} />
         <Route path="/fibonacci" element={<FibonacciCalculator />} />
+        <Route path="/textstats" element={<TextStatistics />} /> 
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>
