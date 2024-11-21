@@ -6,7 +6,7 @@
 - Graph Generator
 - Hash Generator (SHA-256, SHA-384, SHA-512, SHA-1, SHA-224, MD5, RIPEMD-160, BLAKE2b, BLAKE2s)
 - IP Geolocator
-- Json Formatter
+- Formatter (HTML, CSS, Javascript, Json)
 - Lorem Ipsum Generator
 - Markdown Editor
 - Minecraft Formatter
@@ -20,7 +20,7 @@
 - Unit Converter (Length, Weight, Temperature, Volume)
 - URL Encoder
 - UUID Generator
-- YAML Validator
+- Validator (YAML, Json)
 - Barcode Generator
 - BMI Calculator
 - Braille Converter
