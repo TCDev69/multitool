@@ -14,17 +14,15 @@ export function GDPRBanner() {
   const acceptCookies = () => {
     localStorage.setItem('gdpr-consent', 'accepted');
     window.gtag('consent', 'update', {
-      'analytics_storage': 'granted',
-      'ad_storage': 'denied'
+      'analytics_storage': 'granted'
     });
     setShowBanner(false);
   };
 
   const declineCookies = () => {
     localStorage.setItem('gdpr-consent', 'declined');
-    window.gtag('consent', 'update', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
+    window.gtag('consent', 'default', {
+      'analytics_storage': 'denied'
     });
     setShowBanner(false);
   };
