@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp
+  Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -36,6 +36,7 @@ import BMICalculator from "./pages/BMICalculator";
 import BrailleConverter from "./pages/BrailleConverter";
 import Minifier from "./pages/MinifierConverter";
 import Beautifier from "./pages/BeautifyConverter";
+import FibonacciCalculator from "./pages/FibonacciCalculator";
 
 const tools = [
   {
@@ -254,6 +255,14 @@ const tools = [
     gradient: 'from-green-400 to-blue-500',
     tags: ["beautifier", "html", "css", "javascript", "json", "xml"],
   },
+  {
+    name: 'Fibonacci Calculator',
+    description: 'Calculate the nth Fibonacci number',
+    icon: PlusSquare,
+    path: '/fibonacci',
+    gradient: 'from-red-400 to-yellow-500',
+    tags: ["fibonacci", "calculator", "math", "sequence"],
+  }  
 ];
 
 function HomePage() {
@@ -353,6 +362,7 @@ export default function App() {
         <Route path="/braille" element={<BrailleConverter />} />
         <Route path="/minifier" element={<Minifier />} />
         <Route path="/beautifier" element={<Beautifier />} />
+        <Route path="/fibonacci" element={<FibonacciCalculator />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>
