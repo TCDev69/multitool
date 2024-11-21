@@ -1,8 +1,14 @@
 import { Route, Routes, Link } from "react-router-dom";
+import { useState } from "react";
 import {
   Palette, Terminal, Hash, Braces, Code2, Wand2, FileJson, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, Code
 } from "lucide-react";
 import { motion } from "framer-motion";
+
+import { SearchBar } from "./components/SearchBar";
+import { GDPRBanner } from "./components/GDPRBanner";
+import { PrivacyPolicy } from "./components/PrivacyPolicy";
+
 import MinecraftFormatter from "./pages/MinecraftFormatter";
 import Base64Converter from "./pages/Base64Converter";
 import HashGenerator from "./pages/HashGenerator";
@@ -38,6 +44,7 @@ const tools = [
     icon: Palette,
     path: "/minecraft-formatter",
     gradient: "from-green-400 to-blue-500",
+    tags: ["minecraft", "color", "format", "text"],
   },
   {
     name: "Base64 Converter",
@@ -45,6 +52,7 @@ const tools = [
     icon: Terminal,
     path: "/base64",
     gradient: "from-purple-400 to-pink-500",
+    tags: ["base64", "encode", "decode", "converter"],
   },
   {
     name: "Hash Generator",
@@ -52,6 +60,7 @@ const tools = [
     icon: Hash,
     path: "/hash",
     gradient: "from-yellow-400 to-orange-500",
+    tags: ["hash", "security", "encryption", "generator"],
   },
   {
     name: "JSON Formatter",
@@ -59,6 +68,7 @@ const tools = [
     icon: Braces,
     path: "/json",
     gradient: "from-blue-400 to-indigo-500",
+    tags: ["json", "formatter", "validator", "data"],
   },
   {
     name: "URL Encoder",
@@ -66,6 +76,7 @@ const tools = [
     icon: Code2,
     path: "/url",
     gradient: "from-red-400 to-pink-500",
+    tags: ["url", "encode", "decode", "converter"],
   },
   {
     name: "Text Tools",
@@ -73,6 +84,7 @@ const tools = [
     icon: Wand2,
     path: "/text",
     gradient: "from-teal-400 to-cyan-500",
+    tags: ["text", "tools", "manipulation", "editor"],
   },
   {
     name: "YAML Validator",
@@ -80,6 +92,7 @@ const tools = [
     icon: FileJson,
     path: "/yaml",
     gradient: "from-emerald-400 to-green-500",
+    tags: ["yaml", "json", "validator", "converter"],
   },
   {
     name: "Number Converter",
@@ -87,6 +100,7 @@ const tools = [
     icon: FileDigit,
     path: "/number",
     gradient: "from-indigo-400 to-purple-500",
+    tags: ["number", "converter", "math", "formats"],
   },
   {
     name: "Unit Converter",
@@ -94,6 +108,7 @@ const tools = [
     icon: Ruler,
     path: "/unit",
     gradient: "from-orange-400 to-red-500",
+    tags: ["unit", "converter", "measurement", "tools"],
   },
   {
     name: "Markdown Editor",
@@ -101,6 +116,7 @@ const tools = [
     icon: FileText,
     path: "/markdown",
     gradient: "from-pink-400 to-blue-500",
+    tags: ["markdown", "editor", "text", "preview"],
   },
   {
     name: "Password Generator",
@@ -108,6 +124,7 @@ const tools = [
     icon: Key,
     path: "/password",
     gradient: "from-green-400 to-blue-500",
+    tags: ["password", "security", "generator", "strength"],
   },
   {
     name: "QR Code Generator",
@@ -115,6 +132,7 @@ const tools = [
     icon: ScanLine,
     path: "/qrcode",
     gradient: "from-teal-400 to-indigo-500",
+    tags: ["qr", "code", "generator", "text"],
   },
   {
     name: "Timer",
@@ -122,6 +140,7 @@ const tools = [
     icon: Clock,
     path: "/timer",
     gradient: "from-teal-400 to-blue-500",
+    tags: ["timer", "countdown", "time", "tools"],
   },
   {
     name: "Graph Generator",
@@ -129,6 +148,7 @@ const tools = [
     icon: LineChart,
     path: "/graph",
     gradient: "from-blue-400 to-purple-500",
+    tags: ["graph", "charts", "visualization", "tools"],
   },
   {
     name: "IP Geolocation",
@@ -136,6 +156,7 @@ const tools = [
     icon: Globe,
     path: "/ip",
     gradient: "from-green-400 to-teal-500",
+    tags: ["ip", "geolocation", "location", "network"],
   },
   {
     name: "Countdown Timer",
@@ -143,6 +164,7 @@ const tools = [
     icon: AlarmClock,
     path: "/countdown",
     gradient: "from-yellow-400 to-red-500",
+    tags: ["countdown", "timer", "date", "time"],
   },
   {
     name: "Lorem Ipsum Generator",
@@ -150,6 +172,7 @@ const tools = [
     icon: FileType,
     path: "/lorem",
     gradient: "from-indigo-400 to-blue-500",
+    tags: ["lorem", "ipsum", "placeholder", "text"],
   },
   {
     name: "Stopwatch",
@@ -157,6 +180,7 @@ const tools = [
     icon: Timer,
     path: "/stopwatch",
     gradient: "from-red-400 to-orange-500",
+    tags: ["stopwatch", "time", "tools", "laps"],
   },
   {
     name: "Morse Code Translator",
@@ -164,6 +188,7 @@ const tools = [
     icon: Radio,
     path: "/morse",
     gradient: "from-teal-400 to-green-500",
+    tags: ["morse", "code", "translator", "text"],
   },
   {
     name: "CSV to JSON Converter",
@@ -171,6 +196,7 @@ const tools = [
     icon: Table,
     path: "/csv",
     gradient: "from-pink-400 to-purple-500",
+    tags: ["csv", "json", "converter", "data"],
   },
   {
     name: "UUID Generator",
@@ -178,6 +204,7 @@ const tools = [
     icon: Key,
     path: "/uuid",
     gradient: "from-blue-400 to-cyan-500",
+    tags: ["uuid", "generator", "unique", "tools"],
   },
   {
     name: ".gitignore Generator",
@@ -185,6 +212,7 @@ const tools = [
     icon: Github,
     path: "/git",
     gradient: "from-pink-400 to-blue-500",
+    tags: ["gitignore", "generator", "git", "tools"],
   },
   {
     name: "Barcode Generator",
@@ -192,6 +220,7 @@ const tools = [
     icon: Barcode,
     path: "/barcode",
     gradient: "from-green-400 to-teal-500",
+    tags: ["barcode", "generator", "text", "tools"],
   },
   {
     name: "BMI Calculator",
@@ -199,6 +228,7 @@ const tools = [
     icon: Heart,
     path: "/bmi",
     gradient: "from-blue-400 to-green-500",
+    tags: ["bmi", "calculator", "health", "tools"],
   },
   {
     name: "Braille Converter",
@@ -206,6 +236,7 @@ const tools = [
     icon: Accessibility,
     path: "/braille",
     gradient: "from-purple-400 to-pink-500",
+    tags: ["braille", "text", "converter", "accessibility"],
   },
   {
     name: 'Minifier',
@@ -213,17 +244,30 @@ const tools = [
     icon: AArrowDown,
     path: '/minifier',
     gradient: 'from-teal-400 to-green-500',
+    tags: ["minifier", "html", "css", "javascript", "json", "xml"],
   },
   {
     name: 'Beautifier',
-    description: 'Convert minified HTML, CSS, JavaScript, JSON ir XML into readable format',
+    description: 'Convert minified HTML, CSS, JavaScript, JSON or XML into readable format',
     icon: Code,
     path: '/beautifier',
     gradient: 'from-green-400 to-blue-500',
-  },    
+    tags: ["beautifier", "html", "css", "javascript", "json", "xml"],
+  },
 ];
 
 function HomePage() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredTools = tools.filter((tool) => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      tool.name.toLowerCase().includes(searchLower) ||
+      tool.description.toLowerCase().includes(searchLower) ||
+      tool.tags.some(tag => tag.includes(searchLower))
+    );
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
       <div className="max-w-6xl mx-auto">
@@ -236,8 +280,10 @@ function HomePage() {
           </p>
         </div>
 
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.map((tool) => (
+          {filteredTools.map((tool) => (
             <Link key={tool.path} to={tool.path}>
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -254,6 +300,12 @@ function HomePage() {
           ))}
         </div>
 
+        <footer className="mt-12 text-center text-sm text-gray-400">
+          <Link to="/privacy" className="hover:text-white transition-colors">
+            Privacy Policy
+          </Link>
+        </footer>
+
         <a
           href="https://github.com/TCDev69/multitool"
           target="_blank"
@@ -269,36 +321,40 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/minecraft-formatter" element={<MinecraftFormatter />} />
-      <Route path="/base64" element={<Base64Converter />} />
-      <Route path="/hash" element={<HashGenerator />} />
-      <Route path="/json" element={<JsonFormatter />} />
-      <Route path="/url" element={<UrlEncoder />} />
-      <Route path="/text" element={<TextTools />} />
-      <Route path="/yaml" element={<YamlValidator />} />
-      <Route path="/number" element={<NumberConverter />} />
-      <Route path="/unit" element={<UnitConverter />} />
-      <Route path="/markdown" element={<MarkdownEditor />} />
-      <Route path="/password" element={<PasswordGenerator />} />
-      <Route path="/qrcode" element={<QRCodeGenerator />} />
-      <Route path="/graph" element={<GraphGenerator />} />
-      <Route path="/ip" element={<IpGeolocation />} />
-      <Route path="/lorem" element={<LoremIpsum />} />
-      <Route path="/morse" element={<MorseCode />} />
-      <Route path="/timer" element={<TimerPage />} />
-      <Route path="/uuid" element={<UuidGenerator />} />
-      <Route path="/csv" element={<CsvJsonConverter />} />
-      <Route path="/stopwatch" element={<Stopwatch />} />
-      <Route path="/countdown" element={<CountdownPage />} />
-      <Route path="/git" element={<GitignoreGenerator />} />
-      <Route path="/barcode" element={<BarCodeGenerator />} />
-      <Route path="/bmi" element={<BMICalculator />} />
-      <Route path="/braille" element={<BrailleConverter />} />
-      <Route path="/minifier" element={<Minifier />} />
-      <Route path="/beautifier" element={<Beautifier />} />
-      <Route path="*" element={<HomePage />} />
-    </Routes>
+    <>
+      <GDPRBanner />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/minecraft-formatter" element={<MinecraftFormatter />} />
+        <Route path="/base64" element={<Base64Converter />} />
+        <Route path="/hash" element={<HashGenerator />} />
+        <Route path="/json" element={<JsonFormatter />} />
+        <Route path="/url" element={<UrlEncoder />} />
+        <Route path="/text" element={<TextTools />} />
+        <Route path="/yaml" element={<YamlValidator />} />
+        <Route path="/number" element={<NumberConverter />} />
+        <Route path="/unit" element={<UnitConverter />} />
+        <Route path="/markdown" element={<MarkdownEditor />} />
+        <Route path="/password" element={<PasswordGenerator />} />
+        <Route path="/qrcode" element={<QRCodeGenerator />} />
+        <Route path="/graph" element={<GraphGenerator />} />
+        <Route path="/ip" element={<IpGeolocation />} />
+        <Route path="/lorem" element={<LoremIpsum />} />
+        <Route path="/morse" element={<MorseCode />} />
+        <Route path="/timer" element={<TimerPage />} />
+        <Route path="/uuid" element={<UuidGenerator />} />
+        <Route path="/csv" element={<CsvJsonConverter />} />
+        <Route path="/stopwatch" element={<Stopwatch />} />
+        <Route path="/countdown" element={<CountdownPage />} />
+        <Route path="/git" element={<GitignoreGenerator />} />
+        <Route path="/barcode" element={<BarCodeGenerator />} />
+        <Route path="/bmi" element={<BMICalculator />} />
+        <Route path="/braille" element={<BrailleConverter />} />
+        <Route path="/minifier" element={<Minifier />} />
+        <Route path="/beautifier" element={<Beautifier />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
+    </>
   );
 }

@@ -24,4 +24,5 @@
 - Barcode Generator
 - BMI Calculator
 - Braille Converter
-- Minifier (HTML/CSS/JS)
+- Minifier (HTML, CSS, JavaScript, Json, XML)
+- Beautifier (HTML, CSS, JavaScript, Json, XML)
