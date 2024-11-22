@@ -122,7 +122,7 @@ export function PrivacyPolicy() {
 
               <h3 className="text-lg font-semibold mt-6">Contact Information</h3>
               <p>
-                For any privacy-related questions or to exercise your rights, please contact us at privacy@example.com
+                For any privacy-related questions or to exercise your rights, please contact us at email@tcdev.xyz
               </p>
 
               <p className="text-sm text-gray-400 mt-6">
