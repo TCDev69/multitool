@@ -1,28 +1,41 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <meta name="title" content="TCDev's Tools" />
+    <meta name="description" content="Developer & Utility Toolkit" />
+    <meta
+      name="keywords"
+      content="tool, tools, developer, utility, multitool, multi-tool, toolkit, tcdev"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="TCDev" />
+    <title>TCDev | Toolkit</title>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XBRGMG63B8"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/images/favicon.ico" />
-  <title>TCDev | Toolkit</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBRGMG63B8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+      gtag("consent", "default", {
+        analytics_storage: "denied"
+      });
 
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied'
-    });
+      gtag("js", new Date());
+      gtag("config", "G-XBRGMG63B8");
+    </script>
+  </head>
 
-    gtag('js', new Date());
-    gtag('config', 'G-XBRGMG63B8');
-  </script>
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
