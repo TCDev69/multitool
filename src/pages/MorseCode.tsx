@@ -156,7 +156,12 @@ export default function MorseCode() {
               />
             </div>
 
-            <div className="bg-gray-900 p-4 rounded">
+            
+          </div>
+        </Card>
+        <div className="my-6" />
+        <Card>
+        <div className="p-2 rounded">
               <h3 className="text-sm font-medium text-gray-300 mb-2">
                 Morse Code Reference
               </h3>
@@ -166,7 +171,7 @@ export default function MorseCode() {
                   .map(([char, code]) => (
                     <div
                       key={char}
-                      className="flex justify-between bg-gray-800 p-2 rounded"
+                      className="flex justify-between bg-gray-900 p-2 rounded"
                     >
                       <span className="font-bold">{char}</span>
                       <span className="font-mono">{code}</span>
@@ -174,7 +179,6 @@ export default function MorseCode() {
                   ))}
               </div>
             </div>
-          </div>
         </Card>
       </div>
     </div>
