@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowDownUp } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { Card } from "../components/Card";
 import * as Papa from "papaparse";
@@ -75,6 +75,7 @@ export default function CsvJsonConverter() {
                 onClick={toggleMode}
                 className="flex items-center gap-2 px-4 py-2 bg-purple-500 rounded hover:bg-purple-600 transition-colors"
               >
+                <ArrowDownUp className="h-4 w-4" />
                 Switch Mode
               </button>
             </div>
