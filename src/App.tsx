@@ -1,7 +1,36 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import {
-  Palette, Terminal, Hash, Braces, Code, Code2, Wand2, FileJson, Droplet, FileText, FileDigit, Ruler, ScanLine, Clock, LineChart, Globe, AlarmClock, FileType, Timer, Radio, Table, Key, Github, Barcode, Heart, Accessibility, AArrowDown, AArrowUp, PlusSquare, Workflow 
+  Palette,
+  Terminal,
+  Hash,
+  Braces,
+  Code,
+  Code2,
+  Wand2,
+  FileJson,
+  Droplet,
+  FileText,
+  FileDigit,
+  Ruler,
+  ScanLine,
+  Clock,
+  LineChart,
+  Globe,
+  AlarmClock,
+  FileType,
+  Timer,
+  Radio,
+  Table,
+  Key,
+  Github,
+  Barcode,
+  Heart,
+  Accessibility,
+  AArrowDown,
+  AArrowUp,
+  PlusSquare,
+  Workflow
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -41,6 +70,7 @@ import ColorTools from "./pages/ColorTools";
 import HealthCalculator from "./pages/HealthCalculator";
 import DNSChecker from "./pages/DnsChecker";
 import UnicodeConverter from "./pages/UnicodeConverter";
+import BinaryToText from "./pages/BinaryText";
 
 const tools = [
   {
@@ -49,7 +79,7 @@ const tools = [
     icon: Palette,
     path: "/minecraft-formatter",
     gradient: "from-green-400 to-blue-500",
-    tags: ["minecraft", "color", "format", "text"],
+    tags: ["minecraft", "color", "format", "text"]
   },
   {
     name: "Base64 Converter",
@@ -57,7 +87,7 @@ const tools = [
     icon: Terminal,
     path: "/base64",
     gradient: "from-purple-400 to-pink-500",
-    tags: ["base64", "encode", "decode", "converter"],
+    tags: ["base64", "encode", "decode", "converter"]
   },
   {
     name: "Hash Generator",
@@ -65,7 +95,7 @@ const tools = [
     icon: Hash,
     path: "/hash",
     gradient: "from-yellow-400 to-orange-500",
-    tags: ["hash", "security", "encryption", "generator"],
+    tags: ["hash", "security", "encryption", "generator"]
   },
   {
     name: "Code Formatter",
@@ -73,7 +103,7 @@ const tools = [
     icon: Braces,
     path: "/formatter",
     gradient: "from-blue-400 to-indigo-500",
-    tags: ["json", "formatter", "validator", "data"],
+    tags: ["json", "formatter", "validator", "data"]
   },
   {
     name: "URL Encoder",
@@ -81,7 +111,7 @@ const tools = [
     icon: Code2,
     path: "/url",
     gradient: "from-red-400 to-pink-500",
-    tags: ["url", "encode", "decode", "converter"],
+    tags: ["url", "encode", "decode", "converter"]
   },
   {
     name: "Text Tools",
@@ -89,7 +119,7 @@ const tools = [
     icon: Wand2,
     path: "/text",
     gradient: "from-teal-400 to-cyan-500",
-    tags: ["text", "tools", "manipulation", "editor"],
+    tags: ["text", "tools", "manipulation", "editor"]
   },
   {
     name: "Code Validator",
@@ -97,7 +127,7 @@ const tools = [
     icon: FileJson,
     path: "/validator",
     gradient: "from-emerald-400 to-green-500",
-    tags: ["yaml", "json", "validator", "converter"],
+    tags: ["yaml", "json", "validator", "converter"]
   },
   {
     name: "Number Converter",
@@ -105,7 +135,7 @@ const tools = [
     icon: FileDigit,
     path: "/number",
     gradient: "from-indigo-400 to-purple-500",
-    tags: ["number", "converter", "math", "formats"],
+    tags: ["number", "converter", "math", "formats"]
   },
   {
     name: "Unit Converter",
@@ -113,7 +143,7 @@ const tools = [
     icon: Ruler,
     path: "/unit",
     gradient: "from-orange-400 to-red-500",
-    tags: ["unit", "converter", "measurement", "tools"],
+    tags: ["unit", "converter", "measurement", "tools"]
   },
   {
     name: "Markdown Editor",
@@ -121,7 +151,7 @@ const tools = [
     icon: FileText,
     path: "/markdown",
     gradient: "from-pink-400 to-blue-500",
-    tags: ["markdown", "editor", "text", "preview"],
+    tags: ["markdown", "editor", "text", "preview"]
   },
   {
     name: "Password Generator",
@@ -129,7 +159,7 @@ const tools = [
     icon: Key,
     path: "/password",
     gradient: "from-green-400 to-blue-500",
-    tags: ["password", "security", "generator", "strength"],
+    tags: ["password", "security", "generator", "strength"]
   },
   {
     name: "QR Code Generator",
@@ -137,7 +167,7 @@ const tools = [
     icon: ScanLine,
     path: "/qrcode",
     gradient: "from-teal-400 to-indigo-500",
-    tags: ["qr", "code", "generator", "text"],
+    tags: ["qr", "code", "generator", "text"]
   },
   {
     name: "Timer",
@@ -145,7 +175,7 @@ const tools = [
     icon: Clock,
     path: "/timer",
     gradient: "from-teal-400 to-blue-500",
-    tags: ["timer", "countdown", "time", "tools"],
+    tags: ["timer", "countdown", "time", "tools"]
   },
   {
     name: "Graph Generator",
@@ -153,7 +183,7 @@ const tools = [
     icon: LineChart,
     path: "/graph",
     gradient: "from-blue-400 to-purple-500",
-    tags: ["graph", "charts", "visualization", "tools"],
+    tags: ["graph", "charts", "visualization", "tools"]
   },
   {
     name: "IP Geolocation",
@@ -161,7 +191,7 @@ const tools = [
     icon: Globe,
     path: "/ip",
     gradient: "from-green-400 to-teal-500",
-    tags: ["ip", "geolocation", "location", "network"],
+    tags: ["ip", "geolocation", "location", "network"]
   },
   {
     name: "Countdown Timer",
@@ -169,7 +199,7 @@ const tools = [
     icon: AlarmClock,
     path: "/countdown",
     gradient: "from-yellow-400 to-red-500",
-    tags: ["countdown", "timer", "date", "time"],
+    tags: ["countdown", "timer", "date", "time"]
   },
   {
     name: "Lorem Ipsum Generator",
@@ -177,7 +207,7 @@ const tools = [
     icon: FileType,
     path: "/lorem",
     gradient: "from-indigo-400 to-blue-500",
-    tags: ["lorem", "ipsum", "placeholder", "text"],
+    tags: ["lorem", "ipsum", "placeholder", "text"]
   },
   {
     name: "Stopwatch",
@@ -185,7 +215,7 @@ const tools = [
     icon: Timer,
     path: "/stopwatch",
     gradient: "from-red-400 to-orange-500",
-    tags: ["stopwatch", "time", "tools", "laps"],
+    tags: ["stopwatch", "time", "tools", "laps"]
   },
   {
     name: "Morse Code Translator",
@@ -193,7 +223,7 @@ const tools = [
     icon: Radio,
     path: "/morse",
     gradient: "from-teal-400 to-green-500",
-    tags: ["morse", "code", "translator", "text"],
+    tags: ["morse", "code", "translator", "text"]
   },
   {
     name: "CSV to JSON Converter",
@@ -201,7 +231,7 @@ const tools = [
     icon: Table,
     path: "/csv",
     gradient: "from-pink-400 to-purple-500",
-    tags: ["csv", "json", "converter", "data"],
+    tags: ["csv", "json", "converter", "data"]
   },
   {
     name: "UUID Generator",
@@ -209,7 +239,7 @@ const tools = [
     icon: Key,
     path: "/uuid",
     gradient: "from-blue-400 to-cyan-500",
-    tags: ["uuid", "generator", "unique", "tools"],
+    tags: ["uuid", "generator", "unique", "tools"]
   },
   {
     name: ".gitignore Generator",
@@ -217,7 +247,7 @@ const tools = [
     icon: Github,
     path: "/git",
     gradient: "from-pink-400 to-blue-500",
-    tags: ["gitignore", "generator", "git", "tools"],
+    tags: ["gitignore", "generator", "git", "tools"]
   },
   {
     name: "Barcode Generator",
@@ -225,79 +255,89 @@ const tools = [
     icon: Barcode,
     path: "/barcode",
     gradient: "from-green-400 to-teal-500",
-    tags: ["barcode", "generator", "text", "tools"],
-  },{
-    name: 'Health',
-    description: 'BMI and Calorie calculators to track health and fitness',
+    tags: ["barcode", "generator", "text", "tools"]
+  },
+  {
+    name: "Health",
+    description: "BMI and Calorie calculators to track health and fitness",
     icon: Heart,
-    path: '/health',
-    gradient: 'from-green-400 to-teal-500',
-    tags: ['health', 'fitness', 'bmi', 'calories', 'calculator'],
-  },  
+    path: "/health",
+    gradient: "from-green-400 to-teal-500",
+    tags: ["health", "fitness", "bmi", "calories", "calculator"]
+  },
   {
     name: "Braille Converter",
     description: "Convert text to Braille",
     icon: Accessibility,
     path: "/braille",
     gradient: "from-purple-400 to-pink-500",
-    tags: ["braille", "text", "converter", "accessibility"],
+    tags: ["braille", "text", "converter", "accessibility"]
   },
   {
-    name: 'Minifier',
-    description: 'Minify HTML, CSS, JavaScript, JSON, or XML',
+    name: "Minifier",
+    description: "Minify HTML, CSS, JavaScript, JSON, or XML",
     icon: AArrowDown,
-    path: '/minifier',
-    gradient: 'from-teal-400 to-green-500',
-    tags: ["minifier", "html", "css", "javascript", "json", "xml"],
+    path: "/minifier",
+    gradient: "from-teal-400 to-green-500",
+    tags: ["minifier", "html", "css", "javascript", "json", "xml"]
   },
   {
-    name: 'Beautifier',
-    description: 'Convert minified HTML, CSS, JavaScript, JSON or XML into readable format',
+    name: "Beautifier",
+    description:
+      "Convert minified HTML, CSS, JavaScript, JSON or XML into readable format",
     icon: AArrowUp,
-    path: '/beautifier',
-    gradient: 'from-green-400 to-blue-500',
-    tags: ["beautifier", "html", "css", "javascript", "json", "xml"],
+    path: "/beautifier",
+    gradient: "from-green-400 to-blue-500",
+    tags: ["beautifier", "html", "css", "javascript", "json", "xml"]
   },
   {
-    name: 'Fibonacci Calculator',
-    description: 'Calculate the nth Fibonacci number',
+    name: "Fibonacci Calculator",
+    description: "Calculate the nth Fibonacci number",
     icon: PlusSquare,
-    path: '/fibonacci',
-    gradient: 'from-red-400 to-yellow-500',
-    tags: ["fibonacci", "calculator", "math", "sequence"],
+    path: "/fibonacci",
+    gradient: "from-red-400 to-yellow-500",
+    tags: ["fibonacci", "calculator", "math", "sequence"]
   },
   {
-    name: 'Text Statistics',
-    description: 'Count letters, words, paragraphs, and sentences in your text',
+    name: "Text Statistics",
+    description: "Count letters, words, paragraphs, and sentences in your text",
     icon: FileText,
-    path: '/textstats',
-    gradient: 'from-indigo-400 to-blue-500',
-    tags: ["text", "statistics", "count", "words"],
+    path: "/textstats",
+    gradient: "from-indigo-400 to-blue-500",
+    tags: ["text", "statistics", "count", "words"]
   },
   {
-    name: 'Color Tools',
-    description: 'Convert and pick colors easily',
+    name: "Color Tools",
+    description: "Convert and pick colors easily",
     icon: Droplet,
-    path: '/color',
-    gradient: 'from-teal-400 to-cyan-500',
+    path: "/color",
+    gradient: "from-teal-400 to-cyan-500",
     tags: ["color", "converter", "picker", "tool"]
   },
   {
-    name: 'DNS Checker',
-    description: 'Check DNS records for a domain name',
+    name: "DNS Checker",
+    description: "Check DNS records for a domain name",
     icon: Globe,
-    path: '/dns',
-    gradient: 'from-blue-400 to-indigo-500',
-    tags: ['dns', 'domain', 'checker', 'records', 'network'],
-  },   
+    path: "/dns",
+    gradient: "from-blue-400 to-indigo-500",
+    tags: ["dns", "domain", "checker", "records", "network"]
+  },
   {
-    name: 'Unicode Converter',
-    description: 'Convert text to Unicode and vice versa',
+    name: "Unicode Converter",
+    description: "Convert text to Unicode and vice versa",
     icon: Code,
-    path: '/unicode',
-    gradient: 'from-teal-400 to-blue-500',
-    tags: ['unicode', 'converter', 'text', 'encode', 'decode'],
-  }  
+    path: "/unicode",
+    gradient: "from-teal-400 to-blue-500",
+    tags: ["unicode", "converter", "text", "encode", "decode"]
+  },
+  {
+    name: "Binary to Text Converter",
+    description: "Convert binary code to readable text",
+    icon: FileText,
+    path: "/bintxt",
+    gradient: "from-gray-400 to-cyan-500",
+    tags: ["binary", "text", "converter", "decoder"],
+  },
 ];
 
 function HomePage() {
@@ -308,7 +348,7 @@ function HomePage() {
     return (
       tool.name.toLowerCase().includes(searchLower) ||
       tool.description.toLowerCase().includes(searchLower) ||
-      tool.tags.some(tag => tag.includes(searchLower))
+      tool.tags.some((tag) => tag.includes(searchLower))
     );
   });
 
@@ -398,10 +438,11 @@ export default function App() {
         <Route path="/minifier" element={<Minifier />} />
         <Route path="/beautifier" element={<Beautifier />} />
         <Route path="/fibonacci" element={<FibonacciCalculator />} />
-        <Route path="/textstats" element={<TextStatistics />} /> 
-        <Route path="/color" element={<ColorTools />} /> 
-        <Route path="/dns" element={<DNSChecker />} /> 
-        <Route path="/unicode" element={<UnicodeConverter />} /> 
+        <Route path="/textstats" element={<TextStatistics />} />
+        <Route path="/color" element={<ColorTools />} />
+        <Route path="/dns" element={<DNSChecker />} />
+        <Route path="/unicode" element={<UnicodeConverter />} />
+        <Route path="/bintxt" element={<BinaryToText />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>

@@ -119,8 +119,7 @@ export default function Base64Converter() {
           </div>
         </Card>
 
-        {/* File Upload for Base64 Conversion */}
-        <div className="my-6" /> {/* Space between cards */}
+        <div className="my-6" /> 
         <Card>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
