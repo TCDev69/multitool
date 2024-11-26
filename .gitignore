@@ -308,3 +308,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 .bolt/
+download/
+API/

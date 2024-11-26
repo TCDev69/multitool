@@ -106,16 +106,6 @@ export default function BinaryToText() {
                 }
                 className="w-full h-32 p-3 bg-gray-900 text-white rounded resize-none focus:ring-2 focus:ring-teal-500 focus:outline-none"
               ></textarea>
-
-              <div className="flex justify-center">
-                <button
-                  onClick={toggleMode}
-                  className="flex items-center gap-2 px-4 py-2 bg-cyan-500 rounded hover:bg-cyan-600 transition-colors"
-                >
-                  <ArrowDownUp className="h-4 w-4" />
-                  Switch Mode
-                </button>
-              </div>
             </div>
           </Card>
         </div>
