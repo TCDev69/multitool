@@ -1,5 +1,21 @@
 # Multi Tool
 
+## Install dependencies:
+```sh
+npm i
+```
+
+## Run:
+```sh
+npm run dev
+```
+
+## Build:
+```sh
+npm run build
+```
+
+## Tools:
 - Base64 Converter (Text & File)
 - Countdown
 - CSV to Json
