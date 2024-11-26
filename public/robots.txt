@@ -1,0 +1,42 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tools.tcdev.xyz/sitemap.xml
+
+# Disallow API endpoints
+Disallow: /api/
+
+# Rate limiting directives
+Crawl-delay: 10
+
+# Additional rules for specific bots
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Block certain paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /draft/
+
+# Allow static assets
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+
+# Cache directives
+# Note: These are suggestions for crawlers that support them
+Cache-control: max-age=3600
+Revisit-after: 7 days
