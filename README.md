@@ -48,3 +48,35 @@ npm run build
 - DNS Checker (records)
 - Unicode Converter
 - Binary-Text Converter
+
+## ToDo:
+- CSV to Excel Converter
+- Custom Meta Tag Builder
+- Decimal to Fraction Converter
+- Dice Roller
+- Excel to CSV Converter
+- Expense Tracker
+- Fraction to Decimal Converter
+- GIF to Video Converter
+- Git Commands Cheatsheet
+- Latency Checker
+- Markdown Cheatsheet
+- Markdown to HTML Converter
+- MP3 Cutter
+- Network Port Scanner
+- PDF Merge, Password Remover, Split
+- PNG to SVG Converter
+- PNG to WebP Converter
+- Prime Number Checker
+- Random Color Generator
+- Random IPv4/IPv6 Generator
+- Random MAC Address Generator
+- Random Number Generator
+- Regex Generator, Validator
+- Robots.txt Validator
+- Roman Numeral Converter
+- Sitemap Generator
+- SVG to PNG Converter
+- Text Case Converter
+- Video to GIF Converter
+- WebP to PNG Converter
