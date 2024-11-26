@@ -1,5 +1,11 @@
 # Multi Tool
 
+## Download
+```sh
+git clone https://github.com/TCDev69/multitool.git
+cd multitool/
+```
+
 ## Install dependencies:
 ```sh
 npm i
