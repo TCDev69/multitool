@@ -38,7 +38,7 @@
     "react-router-dom": "^6.28.0",
     "remark-gfm": "^4.0.0",
     "terser": "^5.36.0",
-    "uuid": "^9.0.1",
+    "uuid": "^11.0.0",
     "whirlpool-hash": "^1.1.6"
   },
   "devDependencies": {
